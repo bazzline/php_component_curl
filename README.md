@@ -55,6 +55,7 @@ echo $response->statusCode();
 * Request
     * HeadLine
     * Options
+    * Parameters
 * Response
     * ResponseBehaviour
 * Builder
