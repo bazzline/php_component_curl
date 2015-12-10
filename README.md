@@ -77,8 +77,13 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * the url of your endpoint
 * [Response](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Response.php)
     * object oriented approach reflecting the response
-    * ResponseBehaviour
+    * [ResponseBehaviour](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/ResponseBehaviour/ResponseBehaviourInterface.php)
+        * interface to interact with the response
+            * either modify the response (by creating a new one)
+            * change the flow by throwing an exception if the response does not fits your needs (as example)
 * [Builder](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Builder.php)
+    * provides a fluent interface to easy up using curl
+    * it takes care of all :-)
 
 
 # Install
@@ -118,6 +123,9 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
+* [0.1.2](https://github.com/bazzline/php_component_curl/tree/0.1.2) - released at 10.12.2015
+    * adapted behaviour to support the "error" in the response
+    * extended terms
 * [0.1.1](https://github.com/bazzline/php_component_curl/tree/0.1.1) - released at 10.12.2015
     * add description to terms
     * add installation howto
