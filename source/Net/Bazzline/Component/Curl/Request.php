@@ -104,10 +104,10 @@ class Request
     /**
      * @param string $url
      * @param array $parameters
-     * @param array $data
+     * @param null|string|array $data
      * @return Response
      */
-    public function post($url, array $parameters = array(), array $data = array())
+    public function post($url, array $parameters = array(), $data = null)
     {
         return $this->execute(
             $url,
@@ -120,10 +120,10 @@ class Request
     /**
      * @param string $url
      * @param array $parameters
-     * @param array $data
+     * @param null|string|array $data
      * @return Response
      */
-    public function put($url, array $parameters = array(), array $data = array())
+    public function put($url, array $parameters = array(), $data = null)
     {
         return $this->execute(
             $url,
@@ -136,10 +136,10 @@ class Request
     /**
      * @param string $url
      * @param array $parameters
-     * @param array $data
+     * @param null|string|array $data
      * @return Response
      */
-    public function patch($url, array $parameters = array(), array $data = array())
+    public function patch($url, array $parameters = array(), $data = null)
     {
         return $this->execute(
             $url,
@@ -194,11 +194,11 @@ class Request
     /**
      * @param string $url
      * @param null|array $parameters
-     * @param null|array $data
+     * @param null|string|array $data
      * @param string $method
      * @return Response
      */
-    private function execute($url, array $parameters = null, array $data = null, $method)
+    private function execute($url, array $parameters = array(), $data = null, $method)
     {
         $dispatcher     = $this->dispatcher;
         $headerLines    = array_merge($this->headerLines, $this->defaultHeaderLines);
@@ -210,11 +210,17 @@ class Request
         $options[CURLOPT_HEADER]            = 1;
         $options[CURLOPT_HTTPHEADER]        = $headerLines;
         //@todo needed we want to work with json?
-        $options[CURLOPT_POSTFIELDS]        = http_build_query($data); //@see: http://www.lornajane.net/posts/2009/putting-data-fields-with-php-curl
         $options[CURLOPT_RETURNTRANSFER]    = true;
 
-        if (!is_null($parameters)) {
-            $urlWithParameters = '?'. http_build_query($parameters);
+        if (!empty($data)) {
+            if (is_array($data)) {
+                $data = http_build_query($data);
+            }
+            $options[CURLOPT_POSTFIELDS] = ($data); //@see: http://www.lornajane.net/posts/2009/putting-data-fields-with-php-curl
+        }
+
+        if (!empty($parameters)) {
+            $urlWithParameters = $url . '?'. http_build_query($parameters);
         } else {
             $urlWithParameters = $url;
         }

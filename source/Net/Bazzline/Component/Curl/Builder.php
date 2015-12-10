@@ -24,7 +24,7 @@ class Builder
     /** @var string */
     private $asJson;
 
-    /** @var string */
+    /** @var null|string|array */
     private $data;
 
     /** @var array|ResponseBehaviourInterface[] */
@@ -122,11 +122,12 @@ class Builder
      */
     public function reset($alsoTheDefaults = false)
     {
-        $this->asJson       = false;
-        $this->data         = null;
-        $this->parameters   = array();
+        $this->asJson               = false;
+        $this->data                 = null;
+        $this->parameters           = array();
         $this->request->reset($alsoTheDefaults);
-        $this->url          = null;
+        $this->responseBehaviours   = array();
+        $this->url                  = null;
 
         return $this;
     }
@@ -143,7 +144,7 @@ class Builder
     }
 
     /**
-     * @param mixed $data
+     * @param null|string|array $data
      * @return $this
      */
     public function withTheData($data)

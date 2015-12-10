@@ -14,6 +14,7 @@ class Dispatcher
      */
     public function dispatch($url, array $options = array())
     {
+echo 'url: ' . $url . PHP_EOL;
         $handler    = $this->getHandler($url);
         $handler    = $this->setOptions($handler, $options);
         $response   = $this->execute($handler);
@@ -29,11 +30,12 @@ class Dispatcher
     {
         $content        = curl_exec($handler);
         $contentType    = curl_getinfo($handler, CURLINFO_CONTENT_TYPE);
+        $error          = curl_error($handler);
         $errorCode      = curl_errno($handler);
         $statusCode     = curl_getinfo($handler, CURLINFO_HTTP_CODE);
         //@todo investigate if needed http://www.ivangabriele.com/php-how-to-use-4-methods-delete-get-post-put-in-a-restful-api-client-using-curl/
 
-        return new Response($content, $contentType, $errorCode, $statusCode);
+        return new Response($content, $contentType, $error, $errorCode, $statusCode);
     }
 
     /**

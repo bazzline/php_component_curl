@@ -27,10 +27,11 @@ $response = $builder->usePost()
     //->withResponseModifier($modifier) //add the response modifier you want
     ->andFetchTheResponse();
 
-echo $response->content();
-echo $response->contentType();
-echo $response->errorCode();
-echo $response->statusCode();
+echo 'content: ' . $response->content() . PHP_EOL;
+echo 'content type: ' . $response->contentType() . PHP_EOL;
+echo 'error:' . $response->error() . PHP_EOL;
+echo 'error code:' . $response->errorCode() . PHP_EOL;
+echo 'status code: ' . $response->statusCode() . PHP_EOL;
 ```
 
 ## By Using The Request
@@ -43,10 +44,11 @@ $url        = 'http://www.foo.bar';
 
 $response = $request->get($url);
 
-echo $response->content();
-echo $response->contentType();
-echo $response->errorCode();
-echo $response->statusCode();
+echo 'content: ' . $response->content() . PHP_EOL;
+echo 'content type: ' . $response->contentType() . PHP_EOL;
+echo 'error:' . $response->error() . PHP_EOL;
+echo 'error code:' . $response->errorCode() . PHP_EOL;
+echo 'status code: ' . $response->statusCode() . PHP_EOL;
 ```
 
 # Terms
