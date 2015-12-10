@@ -62,7 +62,6 @@ echo $response->statusCode();
 
 # To do's
 
-* add composer.json
 * add [dispatcher](https://github.com/jyggen/curl/blob/master/src/Dispatcher.php) or HandlerGenerator/HandlerFactory
     * https://secure.php.net/manual/en/function.curl-init.php
     * https://secure.php.net/manual/en/function.curl-multi-init.php
