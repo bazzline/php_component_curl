@@ -51,16 +51,47 @@ echo 'error code:' . $response->errorCode() . PHP_EOL;
 echo 'status code: ' . $response->statusCode() . PHP_EOL;
 ```
 
+## Executable Examples
+
+* [Delete Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request.php)
+* [Get Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request.php)
+* [Get Request to duckduckgo.com](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_get_request_to_duckduckgo.php)
+* [Patch Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_patch_request.php)
+* [Post Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_post_request.php)
+* [Put Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_put_request.php)
+
 # Terms
 
-* Dispatcher
-* Request
-    * HeadLine
-    * Options
+* [Dispatcher](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Dispatcher.php)
+    * doing the curl request
+    * if you want to use pure curl, use this class
+* [Request](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Request.php)
+    * object oriented approach reflecting the request
+    * [HeadLine](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/HeadLine/HeadLineInterface.php)
+        * object oriented http headers, start a pull request if you need more
+    * [Options](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Option/OptionInterface.php)
+        * object oriented curl options, start a pull request if you need more
     * Parameters
-* Response
+        * all the parameters you want to add to your url - they are urlencoded automatically
+    * Url
+        * the url of your endpoint
+* [Response](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Response.php)
+    * object oriented approach reflecting the response
     * ResponseBehaviour
-* Builder
+* [Builder](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Builder.php)
+
+
+# Install
+
+## By Hand
+
+    mkdir -p vendor/net_bazzline/php_component_curl
+    cd vendor/net_bazzline/php_component_curl
+    git clone https://github.com/bazzline/php_component_curl .
+
+## With [Packagist](https://packagist.org/packages/net_bazzline/php_component_curl)
+
+    composer composer require net_bazzline/php_component_curl:dev-master
 
 # Links
 
@@ -87,7 +118,9 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
-        * add description to terms
-        * add link to examples
+* [0.1.1](https://github.com/bazzline/php_component_curl/tree/0.1.1) - released at 10.12.2015
+    * add description to terms
+    * add installation howto
+    * add link to examples
 * [0.1.0](https://github.com/bazzline/php_component_curl/tree/0.1.0) - released at 10.12.2015
     * initial plumber release
