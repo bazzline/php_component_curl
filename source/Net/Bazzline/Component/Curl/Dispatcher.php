@@ -14,7 +14,6 @@ class Dispatcher
      */
     public function dispatch($url, array $options = array())
     {
-echo 'url: ' . $url . PHP_EOL;
         $handler    = $this->getHandler($url);
         $handler    = $this->setOptions($handler, $options);
         $response   = $this->execute($handler);
