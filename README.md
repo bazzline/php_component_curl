@@ -137,6 +137,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
     * added scrutinizer, travis-ci and version eye status
+    * added support for scrutinizer and travis-ci
     * fixed styles
 * [0.1.2](https://github.com/bazzline/php_component_curl/tree/0.1.2) - released at 10.12.2015
     * adapted behaviour to support the "error" in the response
