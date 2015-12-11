@@ -129,7 +129,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
 # History
 
 * upcomming
-    @todo
+    * @todo
         * add [dispatcher](https://github.com/jyggen/curl/blob/master/src/Dispatcher.php) or HandlerGenerator/HandlerFactory
             * https://secure.php.net/manual/en/function.curl-init.php
             * https://secure.php.net/manual/en/function.curl-multi-init.php
