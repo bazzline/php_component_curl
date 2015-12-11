@@ -79,7 +79,7 @@ class Request
     }
 
     /**
-     * @param string $key - CURLOPT_* - see: http://php.net/manual/en/function.curl-setopt.php
+     * @param string $line - CURLOPT_* - see: http://php.net/manual/en/function.curl-setopt.php
      */
     public function addRawHeaderLine($line)
     {
@@ -175,7 +175,7 @@ class Request
     public function trace($url)
     {
     }
-    */
+     */
 
     /**
      * @param bool|false $alsoTheDefaults
@@ -206,7 +206,7 @@ class Request
 
         $headerLines[]  = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
 
-        $options[CURLOPT_CUSTOMREQUEST]     = $method;  //@see: http://tr.php.net/curl_setopt#109634
+        $options[CURLOPT_CUSTOMREQUEST]     = $method; //@see: http://tr.php.net/curl_setopt#109634
         $options[CURLOPT_HEADER]            = 1;
         $options[CURLOPT_HTTPHEADER]        = $headerLines;
         //@todo needed we want to work with json?
@@ -220,7 +220,7 @@ class Request
         }
 
         if (!empty($parameters)) {
-            $urlWithParameters = $url . '?'. http_build_query($parameters);
+            $urlWithParameters = $url . '?' . http_build_query($parameters);
         } else {
             $urlWithParameters = $url;
         }

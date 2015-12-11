@@ -1,8 +1,21 @@
 # Simple Curl Wrapper Component for PHP
 
-This is not a component developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
+This project aims to deliver a easy to use and free as in freedom object oriented php command curl component..
 
-The main approach of this component is to create a free as in freedom basic curl object oriented component.
+The build status of the current master branch is tracked by Travis CI:
+[![Build Status](https://travis-ci.org/bazzline/php_component_curl.png?branch=master)](http://travis-ci.org/bazzline/php_component_curl)
+[![Latest stable](https://img.shields.io/packagist/v/net_bazzline/php_component_curl.svg)](https://packagist.org/packages/net_bazzline/php_component_curl)
+
+The scrutinizer status are:
+[![code quality](https://scrutinizer-ci.com/g/bazzline/php_component_curl/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bazzline/php_component_curl/)
+
+The versioneye status is:
+[![Dependency Status](https://www.versioneye.com/user/projects/553941560b24225ef6000002/badge.svg?style=flat)](https://www.versioneye.com/user/projects/553941560b24225ef6000002)
+
+@todo
+Take a look on [openhub.net](https://www.openhub.net/p/php_component_curl).
+
+This is not a component developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
 
 # Example
 
@@ -123,6 +136,8 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
+    * added scrutinizer, travis-ci and version eye status
+    * fixed styles
 * [0.1.2](https://github.com/bazzline/php_component_curl/tree/0.1.2) - released at 10.12.2015
     * adapted behaviour to support the "error" in the response
     * extended terms
