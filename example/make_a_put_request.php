@@ -10,7 +10,7 @@ use Net\Bazzline\Component\Curl\BuilderFactory;
 
 $factory    = new BuilderFactory();
 $builder    = $factory->create();
-$url        = 'https://httpbin.org/get';
+$url        = ($argc > 1) ? $argv[1] : 'https://httpbin.org/get';
 
 $response = $builder->onTheUrl($url)
     ->usePut()

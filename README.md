@@ -68,7 +68,6 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
 
 * [Delete Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request.php)
 * [Get Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request.php)
-* [Get Request to duckduckgo.com](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_get_request_to_duckduckgo.php)
 * [Patch Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_patch_request.php)
 * [Post Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_post_request.php)
 * [Put Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_put_request.php)
@@ -138,6 +137,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add tests
     * added scrutinizer, travis-ci and version eye status
     * added support for scrutinizer and travis-ci
+    * added support for url as optional argument in example scripts
     * fixed styles
 * [0.1.2](https://github.com/bazzline/php_component_curl/tree/0.1.2) - released at 10.12.2015
     * adapted behaviour to support the "error" in the response
