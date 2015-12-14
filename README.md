@@ -135,6 +135,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
+* [0.2.0](https://github.com/bazzline/php_component_curl/tree/0.2.0) - released at 14.12.2015
     * fixed issue in *Response::contentType()*
     * fixed styles
     * added [dispatcher interface](https://github.com/jyggen/curl/blob/master/src/DispatcherInterface.php)
