@@ -7,7 +7,8 @@
 namespace Net\Bazzline\Component\Curl;
 
 interface DispatcherInterface
-{    /**
+{
+    /**
      * @param string $url
      * @param array $options
      * @return Response
