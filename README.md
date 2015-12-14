@@ -34,7 +34,7 @@ $timeout    = new Timeout(10);  //set the timeout to 10 seconds
 $response = $builder->usePost()
     ->onTheUrl($url)
     ->withTheData($data)
-    ->withTheParameters(array('descendingOrderBy' => 'id')
+    ->withTheParameters(array('descendingOrderBy' => 'id'))
     //->withTheHeaderLine($headLine)    //add the headline you want
     ->withTheOption($timeout)
     //->withResponseModifier($modifier) //add the response modifier you want
@@ -135,6 +135,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
+    * fixed issue in builder example
     * fixed linking to DispatcherInterface
     * fixed style in DispatcherInterface
 * [0.2.0](https://github.com/bazzline/php_component_curl/tree/0.2.0) - released at 14.12.2015
