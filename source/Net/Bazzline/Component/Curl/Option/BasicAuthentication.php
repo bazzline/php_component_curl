@@ -9,6 +9,6 @@ class BasicAuthentication extends AbstractAuthentication
      */
     public function value()
     {
-        return CURLAUTH_BASIC
+        return CURLAUTH_BASIC;
     }
 }

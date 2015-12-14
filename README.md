@@ -135,6 +135,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
+    * fixed issue in BasicAuthentication HeadLine
     * fixed issue in builder example
     * fixed linking to DispatcherInterface
     * fixed style in DispatcherInterface
