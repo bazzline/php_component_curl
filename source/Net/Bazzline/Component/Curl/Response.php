@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author: stev leibelt <artodeto@bazzline.net>
+ * @since: 2015-12-09
+ */
 
 namespace Net\Bazzline\Component\Curl;
 
@@ -89,7 +93,7 @@ class Response
     {
         return array(
                 self::ARRAY_KEY_CONTENT         => $this->content,
-                self::ARRAY_KEY_CONTENT_TYPE    => $this->content_type,
+                self::ARRAY_KEY_CONTENT_TYPE    => $this->contentType,
                 self::ARRAY_KEY_ERROR           => $this->error,
                 self::ARRAY_KEY_ERROR_CODE      => $this->errorCode,
                 self::ARRAY_KEY_STATUS_CODE     => $this->statusCode

@@ -135,10 +135,14 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add tests
+    * fixed issue in *Response::contentType()*
+    * fixed styles
+    * added [dispatcher interface](https://github.com/jyggen/curl/blob/master/src/DispatcherInterface.php)
     * added scrutinizer, travis-ci and version eye status
     * added support for scrutinizer and travis-ci
     * added support for url as optional argument in example scripts
-    * fixed styles
+    * added unit test for
+        * response
 * [0.1.2](https://github.com/bazzline/php_component_curl/tree/0.1.2) - released at 10.12.2015
     * adapted behaviour to support the "error" in the response
     * extended terms

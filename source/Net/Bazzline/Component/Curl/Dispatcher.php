@@ -3,9 +3,10 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2015-12-09
  */
+
 namespace Net\Bazzline\Component\Curl;
 
-class Dispatcher
+class Dispatcher implements DispatcherInterface
 {
     /**
      * @param string $url
