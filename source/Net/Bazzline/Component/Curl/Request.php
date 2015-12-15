@@ -214,6 +214,7 @@ class Request
         $dispatcher     = $this->dispatcher;
         $merge          = $this->merge;
         $headerLines    = $merge($this->headerLines, $this->defaultHeaderLines);
+        $isDataProvided = (!is_null($data));
         $options        = $merge($this->options, $this->defaultOptions);
 
         $headerLines[]  = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
@@ -224,11 +225,13 @@ class Request
         //@todo needed we want to work with json?
         $options[CURLOPT_RETURNTRANSFER]    = true;
 
-        if (!empty($data)) {
-            if (is_array($data)) {
+        if ($isDataProvided) {
+            $dataIsNotFromTypeScalar   = (!is_scalar($data));
+
+            if ($dataIsNotFromTypeScalar) {
                 $data = http_build_query($data);
             }
-            $options[CURLOPT_POSTFIELDS] = ($data); //@see: http://www.lornajane.net/posts/2009/putting-data-fields-with-php-curl
+            $options[CURLOPT_POSTFIELDS] = $data; //@see: http://www.lornajane.net/posts/2009/putting-data-fields-with-php-curl
         }
 
         if (!empty($parameters)) {

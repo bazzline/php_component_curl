@@ -137,6 +137,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add tests
     * fixed issue in BasicAuthentication HeadLine
     * fixed issue in builder example
+    * fixed issue in Request when dealing with data that is not an array
     * fixed linking to DispatcherInterface
     * fixed style in DispatcherInterface
     * started unit test for
