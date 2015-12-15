@@ -7,30 +7,39 @@
 namespace Test\Net\Bazzline\Component\Curl;
 
 use Mockery;
-use Net\Bazzline\Component\Curl\Dispatcher;
+use Net\Bazzline\Component\Curl\DispatcherInterface;
 use Net\Bazzline\Component\Curl\Request;
 use Net\Bazzline\Component\Curl\Response;
+use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 use PHPUnit_Framework_TestCase;
 
 abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
 {
     /**
-     * @return Mockery\MockInterface|Dispatcher
+     * @return string
      */
-    protected function getMockOfTheDispatcher()
+    protected function getUrl()
     {
-        return Mockery::mock('Net\Bazzline\Component\Curl\Dispatcher');
+        return 'http://www.foo.bar';
     }
 
     /**
-     * @param Dispatcher $dispatcher
+     * @return Mockery\MockInterface|DispatcherInterface
+     */
+    protected function getMockOfTheDispatcher()
+    {
+        return Mockery::mock('Net\Bazzline\Component\Curl\DispatcherInterface');
+    }
+
+    /**
+     * @param DispatcherInterface $dispatcher
      * @param array $defaultHeaderLines
      * @param array $defaultOptions
      * @return Request
      */
-    protected function getNewRequest(Dispatcher $dispatcher, array $defaultHeaderLines = array(), array $defaultOptions = array())
+    protected function getNewRequest(DispatcherInterface $dispatcher, array $defaultHeaderLines = array(), array $defaultOptions = array())
     {
-        return new Request($dispatcher, $defaultHeaderLines, $defaultOptions);
+        return new Request($dispatcher, new Merge(), $defaultHeaderLines, $defaultOptions);
     }
 
     /**
@@ -41,7 +50,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
      * @param int $statusCode
      * @return Response
      */
-    protected function getNewResponse($content, $contentType, $error, $errorCode, $statusCode)
+    protected function getNewResponse($content = 'example content', $contentType = 'example content type', $error = '', $errorCode = 0, $statusCode = 200)
     {
         return new Response($content, $contentType, $error, $errorCode, $statusCode);
     }

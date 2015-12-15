@@ -3,7 +3,8 @@
 namespace Net\Bazzline\Component\Curl;
 
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsFormUtf8;
-use Net\Bazzline\Component\Curl\Option\SetTimeOutInSeconds;
+use Net\Bazzline\Component\Curl\Option\Timeout;
+use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 
 class RequestFactory implements FactoryInterface
 {
@@ -12,12 +13,12 @@ class RequestFactory implements FactoryInterface
      */
     public function create()
     {
-        $request = new Request(new Dispatcher());
+        $request = new Request(new Dispatcher(), new Merge());
 
         $request->addHeaderLine(new ContentTypeIsFormUtf8());
 
         //demonstration of using an object as option
-        $request->addOption(new SetTimeOutInSeconds(10));
+        $request->addOption(new Timeout(10));
 
         //demonstration of using predefined constants
         $request->addRawOption(CURLOPT_AUTOREFERER, true);

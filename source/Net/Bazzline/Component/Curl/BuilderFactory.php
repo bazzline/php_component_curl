@@ -5,6 +5,8 @@
  */
 namespace Net\Bazzline\Component\Curl;
 
+use Net\Bazzline\Component\Toolbox\HashMap\Merge;
+
 class BuilderFactory implements FactoryInterface
 {
     /**
@@ -12,7 +14,7 @@ class BuilderFactory implements FactoryInterface
      */
     public function create()
     {
-        $builder = new Builder($this->getRequest());
+        $builder = new Builder($this->getRequest(), new Merge());
 
         return $builder;
     }

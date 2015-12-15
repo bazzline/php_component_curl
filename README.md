@@ -1,6 +1,6 @@
 # Simple Curl Wrapper Component for PHP
 
-This project aims to deliver a easy to use and free as in freedom object oriented php command curl component..
+This project aims to deliver an easy to use and free as in freedom object oriented php curl command component..
 
 The build status of the current master branch is tracked by Travis CI:
 [![Build Status](https://travis-ci.org/bazzline/php_component_curl.png?branch=master)](http://travis-ci.org/bazzline/php_component_curl)
@@ -15,7 +15,7 @@ The versioneye status is:
 @todo
 Take a look on [openhub.net](https://www.openhub.net/p/php_component_curl).
 
-This is not a component developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
+This component is not developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
 
 # Example
 
@@ -137,8 +137,11 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * add tests
     * fixed issue in BasicAuthentication HeadLine
     * fixed issue in builder example
+    * fixed issue in Request when dealing with data that is not an array
     * fixed linking to DispatcherInterface
     * fixed style in DispatcherInterface
+    * started unit test for
+        * request
 * [0.2.0](https://github.com/bazzline/php_component_curl/tree/0.2.0) - released at 14.12.2015
     * fixed issue in [Response::contentType()](https://github.com/bazzline/php_component_curl/commit/42841811e848628539b088af894410524cd61a68)
     * fixed styles
