@@ -7,7 +7,7 @@
 namespace Test\Net\Bazzline\Component\Curl;
 
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsJson;
-use Net\Bazzline\Component\Curl\Option\Timeout;
+use Net\Bazzline\Component\Curl\Option\Behaviour\SetTimeOutInSeconds;
 
 class RequestTest extends AbstractTestCase
 {
@@ -59,7 +59,7 @@ class RequestTest extends AbstractTestCase
     public function testAddOption()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
-        $option         = new Timeout(__LINE__);
+        $option         = new SetTimeOutInSeconds(__LINE__);
         $request        = $this->getNewRequest($dispatcher, array(), array());
         $response       = $this->getNewResponse();
 
