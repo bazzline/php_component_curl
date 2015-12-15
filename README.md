@@ -1,6 +1,6 @@
 # Simple Curl Wrapper Component for PHP
 
-This project aims to deliver a easy to use and free as in freedom object oriented php command curl component..
+This project aims to deliver an easy to use and free as in freedom object oriented php curl command component..
 
 The build status of the current master branch is tracked by Travis CI:
 [![Build Status](https://travis-ci.org/bazzline/php_component_curl.png?branch=master)](http://travis-ci.org/bazzline/php_component_curl)
