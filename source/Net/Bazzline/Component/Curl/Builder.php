@@ -11,6 +11,7 @@ use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsJson;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
 use Net\Bazzline\Component\Curl\ResponseBehaviour\ConvertJsonToArrayBehaviour;
 use Net\Bazzline\Component\Curl\ResponseBehaviour\ResponseBehaviourInterface;
+use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 use RuntimeException;
 
 class Builder
@@ -30,6 +31,9 @@ class Builder
     /** @var array|ResponseBehaviourInterface[] */
     private $defaultResponseBehaviours;
 
+    /** @var Merge */
+    private $merge;
+
     /** @var int */
     private $method;
 
@@ -47,11 +51,13 @@ class Builder
 
     /**
      * @param Request $request
+     * @param Merge $merge
      * @param array|ResponseBehaviourInterface[] $defaultResponseBehaviours
      */
-    public function __construct(Request $request, array $defaultResponseBehaviours = array())
+    public function __construct(Request $request, Merge $merge, array $defaultResponseBehaviours = array())
     {
         $this->defaultResponseBehaviours    = $defaultResponseBehaviours;
+        $this->merge                        = $merge;
         $this->request                      = $request;
         $this->reset();
     }
@@ -63,8 +69,9 @@ class Builder
     public function andFetchTheResponse()
     {
         $asJson     = $this->asJson;
+        $merge      = $this->merge;
         /** @var ResponseBehaviourInterface[] $behaviours */
-        $behaviours = array_merge($this->responseBehaviours, $this->defaultResponseBehaviours);
+        $behaviours = $merge($this->responseBehaviours, $this->defaultResponseBehaviours);
         $data       = $this->data;
         $method     = $this->method;
         $parameters = $this->parameters;

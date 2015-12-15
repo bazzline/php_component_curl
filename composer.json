@@ -5,6 +5,7 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
+        "net_bazzline/php_component_toolbox": "1.8.0",
         "php": ">=5.3.3"
     },
     "require-dev": {

@@ -4,6 +4,7 @@ namespace Net\Bazzline\Component\Curl;
 
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsFormUtf8;
 use Net\Bazzline\Component\Curl\Option\Timeout;
+use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 
 class RequestFactory implements FactoryInterface
 {
@@ -12,7 +13,7 @@ class RequestFactory implements FactoryInterface
      */
     public function create()
     {
-        $request = new Request(new Dispatcher());
+        $request = new Request(new Dispatcher(), new Merge());
 
         $request->addHeaderLine(new ContentTypeIsFormUtf8());
 

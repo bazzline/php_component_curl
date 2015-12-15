@@ -8,6 +8,7 @@ namespace Net\Bazzline\Component\Curl;
 
 use Net\Bazzline\Component\Curl\HeadLine\HeadLineInterface;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
+use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 
 class Request
 {
@@ -24,25 +25,30 @@ class Request
     /** @var array */
     private $defaultOptions = array();
 
-    /** @var Dispatcher */
+    /** @var DispatcherInterface */
     private $dispatcher;
 
     /** @var array */
     private $headerLines = array();
 
+    /** @var Merge */
+    private $merge;
+
     /** @var array */
     private $options = array();
 
     /**
-     * @param Dispatcher $dispatcher
+     * @param DispatcherInterface $dispatcher
+     * @param Merge $merge
      * @param array $defaultHeaderLines
      * @param array $defaultOptions
      */
-    public function __construct(Dispatcher $dispatcher, array $defaultHeaderLines = array(), array $defaultOptions = array())
+    public function __construct(DispatcherInterface $dispatcher, Merge $merge, array $defaultHeaderLines = array(), array $defaultOptions = array())
     {
         $this->defaultHeaderLines   = $defaultHeaderLines;
         $this->defaultOptions       = $defaultOptions;
         $this->dispatcher           = $dispatcher;
+        $this->merge                = $merge;
     }
 
     /**
@@ -52,6 +58,7 @@ class Request
     {
         return new self(
             $this->dispatcher,
+            $this->merge,
             $this->defaultHeaderLines,
             $this->defaultOptions
         );
@@ -205,8 +212,9 @@ class Request
     private function execute($url, array $parameters = array(), $data = null, $method)
     {
         $dispatcher     = $this->dispatcher;
-        $headerLines    = array_merge($this->headerLines, $this->defaultHeaderLines);
-        $options        = array_merge($this->options, $this->defaultOptions);
+        $merge          = $this->merge;
+        $headerLines    = $merge($this->headerLines, $this->defaultHeaderLines);
+        $options        = $merge($this->options, $this->defaultOptions);
 
         $headerLines[]  = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
 
