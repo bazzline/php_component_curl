@@ -2,13 +2,13 @@
 
 namespace Net\Bazzline\Component\Curl\Option;
 
-class BasicAuthentication extends AbstractAuthentication
+abstract class AbstractSetOptionToTrue implements OptionInterface
 {
     /**
-     * @return mixed
+     * @return bool
      */
     public function value()
     {
-        return CURLAUTH_BASIC;
+        return true;
     }
 }

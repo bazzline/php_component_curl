@@ -2,7 +2,7 @@
 
 namespace Net\Bazzline\Component\Curl\Option;
 
-class UsernameAndPassword implements OptionInterface
+class SetUsernameAndPassword implements OptionInterface
 {
     /** @var string */
     private $password;
