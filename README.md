@@ -15,7 +15,7 @@ The versioneye status is:
 @todo
 Take a look on [openhub.net](https://www.openhub.net/p/php_component_curl).
 
-This is not a component developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
+This component is not developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
 
 # Example
 
