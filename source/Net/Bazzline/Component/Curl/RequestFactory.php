@@ -3,7 +3,7 @@
 namespace Net\Bazzline\Component\Curl;
 
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsFormUtf8;
-use Net\Bazzline\Component\Curl\Option\Timeout;
+use Net\Bazzline\Component\Curl\Option\SetTimeOutInSeconds;
 
 class RequestFactory implements FactoryInterface
 {
@@ -17,7 +17,7 @@ class RequestFactory implements FactoryInterface
         $request->addHeaderLine(new ContentTypeIsFormUtf8());
 
         //demonstration of using an object as option
-        $request->addOption(new Timeout(10));
+        $request->addOption(new SetTimeOutInSeconds(10));
 
         //demonstration of using predefined constants
         $request->addRawOption(CURLOPT_AUTOREFERER, true);
