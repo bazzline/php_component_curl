@@ -81,20 +81,20 @@ class Request
     }
 
     /**
+     * @param string $line - CURLOPT_* - see: http://php.net/manual/en/function.curl-setopt.php
+     */
+    public function addRawHeaderLine($line)
+    {
+        $this->headerLines[] = $line;
+    }
+
+    /**
      * @param string $key - CURLOPT_* - see: http://php.net/manual/en/function.curl-setopt.php
      * @param mixed $value
      */
     public function addRawOption($key, $value)
     {
         $this->options[$key] = $value;
-    }
-
-    /**
-     * @param string $line - CURLOPT_* - see: http://php.net/manual/en/function.curl-setopt.php
-     */
-    public function addRawHeaderLine($line)
-    {
-        $this->headerLines[] = $line;
     }
 
     /**
