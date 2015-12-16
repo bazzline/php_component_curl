@@ -108,7 +108,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
 
 ## With [Packagist](https://packagist.org/packages/net_bazzline/php_component_curl)
 
-    composer composer require net_bazzline/php_component_curl:dev-master
+    composer require net_bazzline/php_component_curl:dev-master
 
 # Links
 
