@@ -139,6 +139,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
     * added unit test for
         * ConvertJsonToArrayBehaviour
         * ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviour
+    * fixed issue in Builder
 * [0.3.0](https://github.com/bazzline/php_component_curl/tree/0.3.0) - released at 16.12.2015
     * fixed issue in BasicAuthentication HeadLine
     * fixed issue in builder example

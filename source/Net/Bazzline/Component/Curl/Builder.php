@@ -22,7 +22,7 @@ class Builder
     const METHOD_POST   = 3;
     const METHOD_PUT    = 4;
 
-    /** @var string */
+    /** @var boolean */
     private $asJson;
 
     /** @var null|string|array */
@@ -118,7 +118,7 @@ class Builder
     {
         $this->asJson = true;
         $this->request->addHeaderLine(new ContentTypeIsJson());
-        $this->responseBehaviours = new ConvertJsonToArrayBehaviour();
+        $this->responseBehaviours[] = new ConvertJsonToArrayBehaviour();
 
         return $this;
     }
@@ -200,7 +200,7 @@ class Builder
      */
     public function withTheResponseBehaviour(ResponseBehaviourInterface $behaviour)
     {
-        $this->responseBehaviours = $behaviour;
+        $this->responseBehaviours[] = $behaviour;
 
         return $this;
     }
