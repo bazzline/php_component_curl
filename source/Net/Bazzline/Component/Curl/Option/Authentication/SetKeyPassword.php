@@ -1,6 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\Option;
+namespace Net\Bazzline\Component\Curl\Option\Authentication;
+
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionStringValue;
 
 class SetKeyPassword extends AbstractSetOptionStringValue
 {

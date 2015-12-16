@@ -136,6 +136,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add Request::options(), Request::trace() and Request::head()
         * add tests
+* [0.3.0](https://github.com/bazzline/php_component_curl/tree/0.3.0) - released at 16.12.2015
     * fixed issue in BasicAuthentication HeadLine
     * fixed issue in builder example
     * fixed issue in Request when dealing with data that is not an array
@@ -143,6 +144,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
     * fixed style in DispatcherInterface
     * added unit test for
         * request
+    * added curl options
 * [0.2.0](https://github.com/bazzline/php_component_curl/tree/0.2.0) - released at 14.12.2015
     * fixed issue in [Response::contentType()](https://github.com/bazzline/php_component_curl/commit/42841811e848628539b088af894410524cd61a68)
     * fixed styles

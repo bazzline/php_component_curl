@@ -1,6 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\Option;
+namespace Net\Bazzline\Component\Curl\Option\Authorization;
+
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionToTrue;
 
 class EnableNetrc extends AbstractSetOptionToTrue
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\Option;
+namespace Net\Bazzline\Component\Curl\Option\Ftp;
+
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionArrayValue;
 
 class SetQuote extends AbstractSetOptionArrayValue
 {
