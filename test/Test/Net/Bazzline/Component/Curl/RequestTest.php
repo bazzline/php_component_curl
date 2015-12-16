@@ -130,10 +130,53 @@ class RequestTest extends AbstractTestCase
         $url = $this->getUrl();
 
         return array(
-            'without parameters'   =>  array(
+            'with parameters'   =>  array(
                 'parameters'    => array(),
                 'url'           => $url,
                 'expected_url'  => $url
+            ),
+            'with parameter parameter only'   =>  array(
+                'parameters'    => array('key'),
+                'url'           => $url,
+                'expected_url'  => $url . '?0=key'
+            ),
+            'with parameter key only'   =>  array(
+                'parameters'    => array('key' => null),
+                'url'           => $url,
+                'expected_url'  => $url
+            ),
+            'with one parameter'   =>  array(
+                'parameters'    => array('key' => 'value'),
+                'url'           => $url,
+                'expected_url'  => $url . '?key=value'
+            ),
+            'with two parameter'   =>  array(
+                'parameters'    => array(
+                    'one' => 'value',
+                    'two' => 'value'
+                ),
+                'url'           => $url,
+                'expected_url'  => $url . '?one=value&two=value'
+            ),
+            'with multiple parameter'   =>  array(
+                'parameters'    => array(
+                    'one' => 'value',
+                    'two' => 'value',
+                    'three' => 'value'
+                ),
+                'url'           => $url,
+                'expected_url'  => $url . '?one=value&two=value&three=value'
+            ),
+            'with nested parameter'   =>  array(
+                'parameters'    => array(
+                    'key' => array(
+                        'one',
+                        'two',
+                        'three'
+                    )
+                ),
+                'url'           => $url,
+                'expected_url'  => $url . '?key%5B0%5D=one&key%5B1%5D=two&key%5B2%5D=three'
             )
         );
     }
@@ -148,7 +191,6 @@ class RequestTest extends AbstractTestCase
      */
     public function testGet(array $parameters, $url, $expectedUrl)
     {
-$this->markTestIncomplete();
         $dispatcher = $this->getMockOfTheDispatcher();
         $request    = $this->getNewRequest($dispatcher);
         $response   = $this->getNewResponse();
@@ -162,6 +204,31 @@ $this->markTestIncomplete();
             ->once();
 
         $request->get($url, $parameters);
+    }
+
+
+
+    /**
+     * @dataProvider testCaseWithUrlParameters
+     * @param array $parameters
+     * @param $url
+     * @param $expectedUrl
+     */
+    public function testDelete(array $parameters, $url, $expectedUrl)
+    {
+        $dispatcher = $this->getMockOfTheDispatcher();
+        $request    = $this->getNewRequest($dispatcher);
+        $response   = $this->getNewResponse();
+
+        $dispatcher->shouldReceive('dispatch')
+            ->with(
+                $expectedUrl,
+                $this->buildDispatcherOptions('DELETE')
+            )
+            ->andReturn($response)
+            ->once();
+
+        $request->delete($url, $parameters);
     }
 
     /*

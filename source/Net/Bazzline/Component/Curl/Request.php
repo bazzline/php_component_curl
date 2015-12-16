@@ -211,11 +211,12 @@ class Request
      */
     private function execute($url, array $parameters = array(), $data = null, $method)
     {
-        $dispatcher     = $this->dispatcher;
-        $merge          = $this->merge;
-        $headerLines    = $merge($this->headerLines, $this->defaultHeaderLines);
-        $isDataProvided = (!is_null($data));
-        $options        = $merge($this->options, $this->defaultOptions);
+        $areParametersProvided  = (!empty($parameters));
+        $dispatcher             = $this->dispatcher;
+        $merge                  = $this->merge;
+        $headerLines            = $merge($this->headerLines, $this->defaultHeaderLines);
+        $isDataProvided         = (!is_null($data));
+        $options                = $merge($this->options, $this->defaultOptions);
 
         $headerLines[]  = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
 
@@ -231,11 +232,23 @@ class Request
             if ($dataIsNotFromTypeScalar) {
                 $data = http_build_query($data);
             }
-            $options[CURLOPT_POSTFIELDS] = $data; //@see: http://www.lornajane.net/posts/2009/putting-data-fields-with-php-curl
+
+            $dataStringContainsContent = (strlen($data) > 0);
+
+            if ($dataStringContainsContent) {
+                $options[CURLOPT_POSTFIELDS] = $data; //@see: http://www.lornajane.net/posts/2009/putting-data-fields-with-php-curl
+            }
         }
 
-        if (!empty($parameters)) {
-            $urlWithParameters = $url . '?' . http_build_query($parameters);
+        if ($areParametersProvided) {
+            $parametersAsString     = http_build_query($parameters);
+            $isParameterStringValid = (strlen($parametersAsString) > 0);
+
+            if ($isParameterStringValid) {
+                $urlWithParameters = $url . '?' . http_build_query($parameters);
+            } else {
+                $urlWithParameters = $url;
+            }
         } else {
             $urlWithParameters = $url;
         }
