@@ -134,6 +134,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
             * https://secure.php.net/manual/en/function.curl-multi-init.php
         * add RequestModifier
             * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
+        * add Request::options(), Request::trace() and Request::head()
         * add tests
     * fixed issue in BasicAuthentication HeadLine
     * fixed issue in builder example
