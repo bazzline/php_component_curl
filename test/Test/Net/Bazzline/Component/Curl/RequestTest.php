@@ -422,29 +422,4 @@ class RequestTest extends AbstractTestCase
 
         $request->put($this->getUrl());
     }
-
-    /**
-     * @param string $method
-     * @param array $headerLines
-     * @param array $options
-     * @param null|mixed $data
-     * @return array
-     */
-    private function buildDispatcherOptions($method, array $headerLines = array(), array $options = array(), $data = null)
-    {
-        $isDataProvided         = (!is_null($data));
-        $headerLines[]          = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
-        $dispatcherOptions      = $options;
-
-        $dispatcherOptions[CURLOPT_CUSTOMREQUEST]   = $method;
-        $dispatcherOptions[CURLOPT_HEADER]          = 1;
-        $dispatcherOptions[CURLOPT_HTTPHEADER]      = $headerLines;
-        $dispatcherOptions[CURLOPT_RETURNTRANSFER]  = true;
-
-        if ($isDataProvided) {
-            $dispatcherOptions[CURLOPT_POSTFIELDS] = $data;
-        }
-
-        return $dispatcherOptions;
-    }
 }

@@ -136,9 +136,9 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
         * add Request::options(), Request::trace() and Request::head()
-        * add test for Builder
 * [0.4.0](https://github.com/bazzline/php_component_curl/tree/0.4.0) - released at 16.12.2015
     * added unit test for
+        * Builder
         * ConvertJsonToArrayBehaviour
         * ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviour
     * fixed issue in Builder
