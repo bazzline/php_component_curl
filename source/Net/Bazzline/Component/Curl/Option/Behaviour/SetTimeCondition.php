@@ -1,6 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\Option;
+namespace Net\Bazzline\Component\Curl\Option\Behaviour;
+
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionIntValue;
 
 class SetTimeCondition extends AbstractSetOptionIntValue
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\Option;
+namespace Net\Bazzline\Component\Curl\Option\Security;
+
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionIntValue;
 
 class SetSslVerifyHost extends AbstractSetOptionIntValue
 {

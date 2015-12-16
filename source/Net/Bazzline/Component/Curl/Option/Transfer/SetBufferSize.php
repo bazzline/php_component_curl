@@ -1,6 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\Option;
+namespace Net\Bazzline\Component\Curl\Option\Transfer;
+
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionIntValue;
 
 class SetBufferSize extends AbstractSetOptionIntValue
 {
