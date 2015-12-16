@@ -15,11 +15,11 @@ class ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviour implements Respo
     private $statusCode;
 
     /**
-     * @param int $exceededStatusCodeLimit
+     * @param int $firstStatusCodeThatIsOverTheLimit
      */
-    public function __construct($exceededStatusCodeLimit)
+    public function __construct($firstStatusCodeThatIsOverTheLimit = 400)
     {
-        $this->statusCode = (int) $exceededStatusCodeLimit;
+        $this->statusCode = (int) $firstStatusCodeThatIsOverTheLimit;
     }
 
     /**
