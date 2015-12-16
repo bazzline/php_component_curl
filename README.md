@@ -135,7 +135,9 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
                 * https://secure.php.net/manual/en/function.curl-multi-init.php
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
-        * add Request::options(), Request::trace() and Request::head()
+* [0.4.1](https://github.com/bazzline/php_component_curl/tree/0.4.1) - released at 16.12.2015
+    * add Request::options(), Request::trace() and Request::head()
+    * fixed [RequestFactory](https://github.com/bazzline/php_component_curl/commit/82ab3e8a8a1f3c83f8bb50634cf5cba007e223a3)
 * [0.4.0](https://github.com/bazzline/php_component_curl/tree/0.4.0) - released at 16.12.2015
     * added unit test for
         * Builder
