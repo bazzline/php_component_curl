@@ -8,9 +8,122 @@ namespace Test\Net\Bazzline\Component\Curl;
 
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsJson;
 use Net\Bazzline\Component\Curl\Option\Behaviour\SetTimeOutInSeconds;
+use stdClass;
 
 class RequestTest extends AbstractTestCase
 {
+    /**
+     * @return array
+     */
+    public function testCaseWithUrlParameters()
+    {
+        $url = $this->getUrl();
+
+        return array(
+            'with parameters'   =>  array(
+                'parameters'    => array(),
+                'url'           => $url,
+                'expected_url'  => $url
+            ),
+            'with parameter parameter only'   =>  array(
+                'parameters'    => array('key'),
+                'url'           => $url,
+                'expected_url'  => $url . '?0=key'
+            ),
+            'with parameter key only'   =>  array(
+                'parameters'    => array('key' => null),
+                'url'           => $url,
+                'expected_url'  => $url
+            ),
+            'with one parameter'   =>  array(
+                'parameters'    => array('key' => 'value'),
+                'url'           => $url,
+                'expected_url'  => $url . '?key=value'
+            ),
+            'with two parameter'   =>  array(
+                'parameters'    => array(
+                    'one' => 'value',
+                    'two' => 'value'
+                ),
+                'url'           => $url,
+                'expected_url'  => $url . '?one=value&two=value'
+            ),
+            'with multiple parameter'   =>  array(
+                'parameters'    => array(
+                    'one' => 'value',
+                    'two' => 'value',
+                    'three' => 'value'
+                ),
+                'url'           => $url,
+                'expected_url'  => $url . '?one=value&two=value&three=value'
+            ),
+            'with nested parameter'   =>  array(
+                'parameters'    => array(
+                    'key' => array(
+                        'one',
+                        'two',
+                        'three'
+                    )
+                ),
+                'url'           => $url,
+                'expected_url'  => $url . '?key%5B0%5D=one&key%5B1%5D=two&key%5B2%5D=three'
+            )
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function testCaseWithUrlParametersAndData()
+    {
+        $testCaseTemplates  = $this->testCaseWithUrlParameters();
+        $testCases          = array();
+        $object             = new stdClass();
+
+        $object->bar = 'foo';
+        $object->foo = 'bar';
+
+        foreach ($testCaseTemplates as $name => $template) {
+            $testCases[$name . ' without data'] = array(
+                'parameters'    => $template['parameters'],
+                'data'          => null,
+                'url'           => $template['url'],
+                'expected_url'  => $template['expected_url'],
+                'expected_data' => null
+            );
+            $testCases[$name . ' with int as data'] = array(
+                'parameters'    => $template['parameters'],
+                'data'          => 42,
+                'url'           => $template['url'],
+                'expected_url'  => $template['expected_url'],
+                'expected_data' => 42
+            );
+            $testCases[$name . ' with string as data'] = array(
+                'parameters'    => $template['parameters'],
+                'data'          => 'there is no foo without a bar',
+                'url'           => $template['url'],
+                'expected_url'  => $template['expected_url'],
+                'expected_data' => 'there is no foo without a bar'
+            );
+            $testCases[$name . ' with array as data'] = array(
+                'parameters'    => $template['parameters'],
+                'data'          => array('there' => 'is', 'no' => 'foo', 'without' => 'a', 'bar'),
+                'url'           => $template['url'],
+                'expected_url'  => $template['expected_url'],
+                'expected_data' => 'there=is&no=foo&without=a&0=bar'
+            );
+            $testCases[$name . ' with object as data'] = array(
+                'parameters'    => $template['parameters'],
+                'data'          => $object,
+                'url'           => $template['url'],
+                'expected_url'  => $template['expected_url'],
+                'expected_data' => 'bar=foo&foo=bar'
+            );
+        }
+
+        return $testCases;
+    }
+
     public function testClone()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
@@ -125,62 +238,6 @@ class RequestTest extends AbstractTestCase
         $request->put($this->getUrl());
     }
 
-    public function testCaseWithUrlParameters()
-    {
-        $url = $this->getUrl();
-
-        return array(
-            'with parameters'   =>  array(
-                'parameters'    => array(),
-                'url'           => $url,
-                'expected_url'  => $url
-            ),
-            'with parameter parameter only'   =>  array(
-                'parameters'    => array('key'),
-                'url'           => $url,
-                'expected_url'  => $url . '?0=key'
-            ),
-            'with parameter key only'   =>  array(
-                'parameters'    => array('key' => null),
-                'url'           => $url,
-                'expected_url'  => $url
-            ),
-            'with one parameter'   =>  array(
-                'parameters'    => array('key' => 'value'),
-                'url'           => $url,
-                'expected_url'  => $url . '?key=value'
-            ),
-            'with two parameter'   =>  array(
-                'parameters'    => array(
-                    'one' => 'value',
-                    'two' => 'value'
-                ),
-                'url'           => $url,
-                'expected_url'  => $url . '?one=value&two=value'
-            ),
-            'with multiple parameter'   =>  array(
-                'parameters'    => array(
-                    'one' => 'value',
-                    'two' => 'value',
-                    'three' => 'value'
-                ),
-                'url'           => $url,
-                'expected_url'  => $url . '?one=value&two=value&three=value'
-            ),
-            'with nested parameter'   =>  array(
-                'parameters'    => array(
-                    'key' => array(
-                        'one',
-                        'two',
-                        'three'
-                    )
-                ),
-                'url'           => $url,
-                'expected_url'  => $url . '?key%5B0%5D=one&key%5B1%5D=two&key%5B2%5D=three'
-            )
-        );
-    }
-
 
 
     /**
@@ -231,52 +288,123 @@ class RequestTest extends AbstractTestCase
         $request->delete($url, $parameters);
     }
 
-    /*
-    public function testCaseWithUrlParametersAndData()
+
+
+    /**
+     * @dataProvider testCaseWithUrlParametersAndData
+     * @param array $parameters
+     * @param mixed $data
+     * @param string $url
+     * @param string $expectedUrl
+     * @param mixed $expectedData
+     */
+    public function testPatch(array $parameters, $data, $url, $expectedUrl, $expectedData)
     {
-        return array(
+        $dispatcher = $this->getMockOfTheDispatcher();
+        $request    = $this->getNewRequest($dispatcher);
+        $response   = $this->getNewResponse();
 
-        );
+        $dispatcher->shouldReceive('dispatch')
+            ->with(
+                $expectedUrl,
+                $this->buildDispatcherOptions(
+                    'PATCH',
+                    array(),
+                    array(),
+                    $expectedData
+                )
+            )
+            ->andReturn($response)
+            ->once();
+
+        $request->patch($url, $parameters, $data);
     }
-    */
 
-    /*
-    public function testDelete(array $parameters, $url, $expectedUrl)
+
+
+    /**
+     * @dataProvider testCaseWithUrlParametersAndData
+     * @param array $parameters
+     * @param mixed $data
+     * @param string $url
+     * @param string $expectedUrl
+     * @param mixed $expectedData
+     */
+    public function testPost(array $parameters, $data, $url, $expectedUrl, $expectedData)
     {
+        $dispatcher = $this->getMockOfTheDispatcher();
+        $request    = $this->getNewRequest($dispatcher);
+        $response   = $this->getNewResponse();
 
+        $dispatcher->shouldReceive('dispatch')
+            ->with(
+                $expectedUrl,
+                $this->buildDispatcherOptions(
+                    'POST',
+                    array(),
+                    array(),
+                    $expectedData
+                )
+            )
+            ->andReturn($response)
+            ->once();
+
+        $request->post($url, $parameters, $data);
     }
 
-    public function testPatch(array $parameters, $url, $expectedUrl, $expectedData)
+
+
+    /**
+     * @dataProvider testCaseWithUrlParametersAndData
+     * @param array $parameters
+     * @param mixed $data
+     * @param string $url
+     * @param string $expectedUrl
+     * @param mixed $expectedData
+     */
+    public function testPut(array $parameters, $data, $url, $expectedUrl, $expectedData)
     {
+        $dispatcher = $this->getMockOfTheDispatcher();
+        $request    = $this->getNewRequest($dispatcher);
+        $response   = $this->getNewResponse();
 
+        $dispatcher->shouldReceive('dispatch')
+            ->with(
+                $expectedUrl,
+                $this->buildDispatcherOptions(
+                    'PUT',
+                    array(),
+                    array(),
+                    $expectedData
+                )
+            )
+            ->andReturn($response)
+            ->once();
+
+        $request->put($url, $parameters, $data);
     }
-
-    public function testPost(array $parameters, $url, $expectedUrl, $expectedData)
-    {
-
-    }
-
-    public function testPut(array $parameters, $url, $expectedUrl, $expectedData)
-    {
-
-    }
-    */
 
     /**
      * @param string $method
      * @param array $headerLines
      * @param array $options
+     * @param null|mixed $data
      * @return array
      */
-    private function buildDispatcherOptions($method, array $headerLines = array(), array $options = array())
+    private function buildDispatcherOptions($method, array $headerLines = array(), array $options = array(), $data = null)
     {
-        $headerLines[]      = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
-        $dispatcherOptions  = $options;
+        $isDataProvided         = (!is_null($data));
+        $headerLines[]          = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
+        $dispatcherOptions      = $options;
 
         $dispatcherOptions[CURLOPT_CUSTOMREQUEST]   = $method;
         $dispatcherOptions[CURLOPT_HEADER]          = 1;
         $dispatcherOptions[CURLOPT_HTTPHEADER]      = $headerLines;
         $dispatcherOptions[CURLOPT_RETURNTRANSFER]  = true;
+
+        if ($isDataProvided) {
+            $dispatcherOptions[CURLOPT_POSTFIELDS] = $data;
+        }
 
         return $dispatcherOptions;
     }
