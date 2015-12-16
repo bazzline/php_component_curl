@@ -171,3 +171,7 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
     * add link to examples
 * [0.1.0](https://github.com/bazzline/php_component_curl/tree/0.1.0) - released at 10.12.2015
     * initial plumber release
+
+# Final Words
+
+Star it if you like it :-). Add issues if you need it. Pull patches if you enjoy it. Write a blog entry if you use it :-D.
