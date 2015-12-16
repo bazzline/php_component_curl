@@ -384,6 +384,45 @@ class RequestTest extends AbstractTestCase
         $request->put($url, $parameters, $data);
     }
 
+    public function testRestWithoutResettingTheDefaults()
+    {
+        $dispatcher     = $this->getMockOfTheDispatcher();
+        $request        = $this->getNewRequest($dispatcher, array(), array());
+        $response       = $this->getNewResponse();
+
+        $request->addRawOption('foo', 'bar');
+        $request->reset();
+
+        $dispatcher->shouldReceive('dispatch')
+            ->with(
+                $this->getUrl(),
+                $this->buildDispatcherOptions('PUT')
+            )
+            ->andReturn($response)
+            ->once();
+
+        $request->put($this->getUrl());
+    }
+
+    public function testRestWithResettingTheDefaults()
+    {
+        $dispatcher     = $this->getMockOfTheDispatcher();
+        $request        = $this->getNewRequest($dispatcher, array('foo' => 'bar'), array());
+        $response       = $this->getNewResponse();
+
+        $request->reset(true);
+
+        $dispatcher->shouldReceive('dispatch')
+            ->with(
+                $this->getUrl(),
+                $this->buildDispatcherOptions('PUT')
+            )
+            ->andReturn($response)
+            ->once();
+
+        $request->put($this->getUrl());
+    }
+
     /**
      * @param string $method
      * @param array $headerLines
