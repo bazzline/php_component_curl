@@ -69,6 +69,6 @@ class ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviourTest extends Abst
      */
     private function createResponse($statusCode)
     {
-        return $this->getNewResponse('example content', 'example content type', '', 0, $statusCode);
+        return $this->getNewResponse('example content', 'example content type', array(), '', 0, $statusCode);
     }
 }

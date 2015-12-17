@@ -20,6 +20,7 @@ class ConvertJsonToArrayBehaviour implements ResponseBehaviourInterface
         return new Response(
             json_encode($response->content()),
             $response->contentType(),
+            $response->headerLines(),
             $response->error(),
             $response->errorCode(),
             $response->statusCode()

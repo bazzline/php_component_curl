@@ -20,6 +20,9 @@ class Response
     /** @var null|string */
     private $contentType;
 
+    /** @var array */
+    private $headerLines;
+
     /** @var null|string */
     private $error;
 
@@ -32,14 +35,16 @@ class Response
     /**
      * @param mixed $content
      * @param string $contentType
+     * @param array $headerLines
      * @param string $error
      * @param int $errorCode
      * @param int $statusCode
      */
-    public function __construct($content, $contentType, $error, $errorCode, $statusCode)
+    public function __construct($content, $contentType, array $headerLines, $error, $errorCode, $statusCode)
     {
         $this->content      = $content;
         $this->contentType  = $contentType;
+        $this->headerLines  = $headerLines;
         $this->error        = $error;
         $this->errorCode    = $errorCode;
         $this->statusCode   = $statusCode;
@@ -59,6 +64,27 @@ class Response
     public function contentType()
     {
         return $this->contentType;
+    }
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function headerLine($prefix)
+    {
+        return (
+            (isset($this->headerLines[$prefix]))
+                ? $this->headerLines[$prefix]
+                : null
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function headerLines()
+    {
+        return $this->headerLines;
     }
 
     /**

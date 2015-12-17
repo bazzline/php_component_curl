@@ -18,6 +18,7 @@ $response = $builder->onTheUrl($url)
 
 echo 'content: ' . $response->content() . PHP_EOL;
 echo 'content type: ' . $response->contentType() . PHP_EOL;
+echo 'head lines: ' . var_export($response->headerLines(), true) . PHP_EOL;
 echo 'error:' . $response->error() . PHP_EOL;
 echo 'error code:' . $response->errorCode() . PHP_EOL;
 echo 'status code: ' . $response->statusCode() . PHP_EOL;

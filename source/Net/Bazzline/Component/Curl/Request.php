@@ -221,10 +221,9 @@ class Request
         $headerLines[]  = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
 
         $options[CURLOPT_CUSTOMREQUEST]     = $method; //@see: http://tr.php.net/curl_setopt#109634
-        $options[CURLOPT_HEADER]            = 1;
         $options[CURLOPT_HTTPHEADER]        = $headerLines;
-        //@todo needed we want to work with json?
         $options[CURLOPT_RETURNTRANSFER]    = true;
+        //@todo what about binary transfer?
 
         if ($isDataProvided) {
             $dataIsNotFromTypeScalar   = (!is_scalar($data));

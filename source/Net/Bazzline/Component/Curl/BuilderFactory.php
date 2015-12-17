@@ -10,7 +10,7 @@ use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 class BuilderFactory implements FactoryInterface
 {
     /**
-     * @return mixed|Builder
+     * @return Builder|mixed
      */
     public function create()
     {

@@ -8,6 +8,9 @@ namespace Net\Bazzline\Component\Curl;
 
 class Dispatcher implements DispatcherInterface
 {
+    /** @var array */
+    private $headerLines;
+
     /**
      * @param string $url
      * @param array $options
@@ -15,6 +18,7 @@ class Dispatcher implements DispatcherInterface
      */
     public function dispatch($url, array $options = array())
     {
+        $this->reset();
         $handler    = $this->getHandler($url);
         $handler    = $this->setOptions($handler, $options);
         $response   = $this->execute($handler);
@@ -30,12 +34,14 @@ class Dispatcher implements DispatcherInterface
     {
         $content        = curl_exec($handler);
         $contentType    = curl_getinfo($handler, CURLINFO_CONTENT_TYPE);
+        //@see http://stackoverflow.com/a/10667879
         $error          = curl_error($handler);
         $errorCode      = curl_errno($handler);
         $statusCode     = curl_getinfo($handler, CURLINFO_HTTP_CODE);
         //@todo investigate if needed http://www.ivangabriele.com/php-how-to-use-4-methods-delete-get-post-put-in-a-restful-api-client-using-curl/
+        //@todo how to handle response code 100 - other header? - http://stackoverflow.com/a/23939785
 
-        return new Response($content, $contentType, $error, $errorCode, $statusCode);
+        return new Response($content, $contentType, $this->headerLines, $error, $errorCode, $statusCode);
     }
 
     /**
@@ -56,8 +62,37 @@ class Dispatcher implements DispatcherInterface
      */
     protected function setOptions($handler, array $options)
     {
+        $options[CURLINFO_HEADER_OUT]       = 1;
+        $options[CURLOPT_HEADERFUNCTION]    = array($this, 'processHeadLine');
+
         curl_setopt_array($handler, $options);
 
         return $handler;
+    }
+
+
+
+    /**
+     * @param ressource $handler
+     * @param string $string
+     * @return int
+     */
+    private function processHeadLine($handler, $string)
+    {
+        $delimiter  = ':';
+        $exploded   = explode($delimiter, trim($string));
+        $isValid    = (count($exploded) === 2);
+
+        if ($isValid) {
+            $prefix                     = array_shift($exploded);
+            $this->headerLines[$prefix] = implode($delimiter, $exploded);  //needed because of lines like "Date: Thu, 17 Dec 2015 16:47:42 GMT"
+        }
+
+        return strlen($string);
+    }
+
+    private function reset()
+    {
+        $this->headerLines = array();
     }
 }

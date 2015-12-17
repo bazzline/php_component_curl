@@ -12,11 +12,12 @@ class ResponseTest extends AbstractTestCase
     {
         $content        = 'the content';
         $contentType    = 'the content type';
+        $headerLines    = array();
         $error          = 'this is an error';
         $errorCode      = __LINE__;
         $statusCode     = __LINE__;
 
-        $response = $this->getNewResponse($content, $contentType, $error, $errorCode, $statusCode);
+        $response = $this->getNewResponse($content, $contentType, $headerLines, $error, $errorCode, $statusCode);
 
         $this->assertEquals($content, $response->content());
         $this->assertEquals($contentType, $response->contentType());
