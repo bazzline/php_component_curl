@@ -85,7 +85,7 @@ class Dispatcher implements DispatcherInterface
 
         if ($isValid) {
             $prefix                     = array_shift($exploded);
-            $this->headerLines[$prefix] = implode($delimiter, $exploded);  //needed because of lines like "Date: Thu, 17 Dec 2015 16:47:42 GMT"
+            $this->headerLines[$prefix] = implode($delimiter, $exploded); //needed because of lines like "Date: Thu, 17 Dec 2015 16:47:42 GMT"
         }
 
         return strlen($string);
