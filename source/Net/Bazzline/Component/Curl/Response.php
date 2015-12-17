@@ -20,14 +20,14 @@ class Response
     /** @var null|string */
     private $contentType;
 
-    /** @var array */
-    private $headerLines;
-
     /** @var null|string */
     private $error;
 
     /** @var null|int */
     private $errorCode;
+
+    /** @var array */
+    private $headerLines;
 
     /** @var null|int */
     private $statusCode;
