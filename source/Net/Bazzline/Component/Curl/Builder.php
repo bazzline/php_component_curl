@@ -195,6 +195,29 @@ class Builder
     }
 
     /**
+     * @param string $line
+     * @return $this
+     */
+    public function withTheRawHeaderLine($line)
+    {
+        $this->request->addRawHeaderLine($line);
+
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     * @param string $value
+     * @return $this
+     */
+    public function withTheRawOption($key, $value)
+    {
+        $this->request->addRawOption($key, $value);
+
+        return $this;
+    }
+
+    /**
      * @param ResponseBehaviourInterface $behaviour
      * @return $this
      */

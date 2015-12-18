@@ -154,6 +154,8 @@ If you want to change this, you either have to extend the existing *Request* or 
                 * https://secure.php.net/manual/en/function.curl-multi-init.php
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
+* [0.6.1](https://github.com/bazzline/php_component_curl/tree/0.6.1) - released at 18.12.2015
+    * added *Builder::withTheRawHeaderLine()* and *Builder::withTheRawOption()*
 * [0.6.0](https://github.com/bazzline/php_component_curl/tree/0.6.0) - released at 18.12.2015
     * added *Not Available Curl Options* section in the readme
     * moved setting of curl option "CURLOPT_RETURNTRANSFER" from *Request* into the default *Dispatcher*
