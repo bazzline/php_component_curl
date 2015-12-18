@@ -106,9 +106,9 @@ class Request
     {
         return $this->execute(
             $url,
+            self::HTTP_METHOD_GET,
             $parameters,
-            array(),
-            self::HTTP_METHOD_GET
+            array()
         );
     }
 
@@ -122,9 +122,9 @@ class Request
     {
         return $this->execute(
             $url,
+            self::HTTP_METHOD_POST,
             $parameters,
-            $data,
-            self::HTTP_METHOD_POST
+            $data
         );
     }
 
@@ -138,9 +138,9 @@ class Request
     {
         return $this->execute(
             $url,
+            self::HTTP_METHOD_PUT,
             $parameters,
-            $data,
-            self::HTTP_METHOD_PUT
+            $data
         );
     }
 
@@ -154,9 +154,9 @@ class Request
     {
         return $this->execute(
             $url,
+            self::HTTP_METHOD_PATCH,
             $parameters,
-            $data,
-            self::HTTP_METHOD_PATCH
+            $data
         );
     }
 
@@ -169,9 +169,9 @@ class Request
     {
         return $this->execute(
             $url,
+            self::HTTP_METHOD_DELETE,
             $parameters,
-            array(),
-            self::HTTP_METHOD_DELETE
+            array()
         );
     }
 
@@ -204,12 +204,12 @@ class Request
 
     /**
      * @param string $url
+     * @param string $method
      * @param null|array $parameters
      * @param null|string|array $data
-     * @param string $method
      * @return Response
      */
-    private function execute($url, array $parameters = array(), $data = null, $method)
+    private function execute($url, $method, array $parameters = array(), $data = null)
     {
         $areParametersProvided  = (!empty($parameters));
         $dispatcher             = $this->dispatcher;
@@ -217,12 +217,10 @@ class Request
         $headerLines            = $merge($this->headerLines, $this->defaultHeaderLines);
         $isDataProvided         = (!is_null($data));
         $options                = $merge($this->options, $this->defaultOptions);
-
-        $headerLines[]  = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
+        $headerLines[]          = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
 
         $options[CURLOPT_CUSTOMREQUEST]     = $method; //@see: http://tr.php.net/curl_setopt#109634
         $options[CURLOPT_HTTPHEADER]        = $headerLines;
-        $options[CURLOPT_RETURNTRANSFER]    = true;
         //@todo what about binary transfer?
 
         if ($isDataProvided) {

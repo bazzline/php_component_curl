@@ -99,6 +99,23 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
     * provides a fluent interface to easy up using curl
     * it takes care of all :-)
 
+# Not Available Curl Options
+
+In general, the php version is limiting the available [curl options](http://php.net/manual/en/curl.constants.php).
+Furthermore, some options are not implemented because of their hardcoded usage in the *Response* or the *Dispatcher* (you can set it but they would be overwritten).
+
+This options are:
+
+* used in the *Request*
+    * CURLOPT_CUSTOMREQUEST
+    * CURLOPT_HTTPHEADER
+    * CURLOPT_POSTFIELDS
+* used in the *Dispatcher*
+    * CURLINFO_HEADER_OUT
+    * CURLOPT_HEADERFUNCTION
+    * CURLOPT_RETURNTRANSFER
+
+If you want to change this, you either have to extend the existing *Request* or *Dispatcher* object.
 
 # Install
 
@@ -137,6 +154,10 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
                 * https://secure.php.net/manual/en/function.curl-multi-init.php
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
+* [0.6.0](https://github.com/bazzline/php_component_curl/tree/0.6.0) - released at 18.12.2015
+    * added *Not Available Curl Options* section in the readme
+    * moved setting of curl option "CURLOPT_RETURNTRANSFER" from *Request* into the default *Dispatcher*
+    * rearranged *Response* constructor parameters
 * [0.5.0](https://github.com/bazzline/php_component_curl/tree/0.5.0) - released at 17.12.2015
     * added *Response::headerLines()* and *Response::headerLine($prefix)* and removed header output from the content
 * [0.4.1](https://github.com/bazzline/php_component_curl/tree/0.4.1) - released at 16.12.2015

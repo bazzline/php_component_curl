@@ -32,7 +32,6 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
 
         $dispatcherOptions[CURLOPT_CUSTOMREQUEST]   = $method;
         $dispatcherOptions[CURLOPT_HTTPHEADER]      = $headerLines;
-        $dispatcherOptions[CURLOPT_RETURNTRANSFER]  = true;
 
         if ($isDataProvided) {
             $dispatcherOptions[CURLOPT_POSTFIELDS] = $data;
@@ -81,15 +80,15 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
     /**
      * @param mixed $content
      * @param string $contentType
-     * @param array $headLines
      * @param string $error
      * @param int $errorCode
+     * @param array $headLines
      * @param int $statusCode
      * @return Response
      */
-    protected function getNewResponse($content = 'example content', $contentType = 'example content type', array $headLines = array(), $error = '', $errorCode = 0, $statusCode = 200)
+    protected function getNewResponse($content = 'example content', $contentType = 'example content type', $error = '', $errorCode = 0, array $headLines = array(), $statusCode = 200)
     {
-        return new Response($content, $contentType, $headLines, $error, $errorCode, $statusCode);
+        return new Response($content, $contentType, $error, $errorCode, $headLines, $statusCode);
     }
 
     /**

@@ -35,18 +35,18 @@ class Response
     /**
      * @param mixed $content
      * @param string $contentType
-     * @param array $headerLines
      * @param string $error
      * @param int $errorCode
+     * @param array $headerLines
      * @param int $statusCode
      */
-    public function __construct($content, $contentType, array $headerLines, $error, $errorCode, $statusCode)
+    public function __construct($content, $contentType, $error, $errorCode, array $headerLines, $statusCode)
     {
         $this->content      = $content;
         $this->contentType  = $contentType;
-        $this->headerLines  = $headerLines;
         $this->error        = $error;
         $this->errorCode    = $errorCode;
+        $this->headerLines  = $headerLines;
         $this->statusCode   = $statusCode;
     }
 

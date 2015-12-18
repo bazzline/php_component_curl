@@ -41,7 +41,7 @@ class Dispatcher implements DispatcherInterface
         //@todo investigate if needed http://www.ivangabriele.com/php-how-to-use-4-methods-delete-get-post-put-in-a-restful-api-client-using-curl/
         //@todo how to handle response code 100 - other header? - http://stackoverflow.com/a/23939785
 
-        return new Response($content, $contentType, $this->headerLines, $error, $errorCode, $statusCode);
+        return new Response($content, $contentType, $error, $errorCode, $this->headerLines, $statusCode);
     }
 
     /**
@@ -64,6 +64,7 @@ class Dispatcher implements DispatcherInterface
     {
         $options[CURLINFO_HEADER_OUT]       = 1;
         $options[CURLOPT_HEADERFUNCTION]    = array($this, 'processHeadLine');
+        $options[CURLOPT_RETURNTRANSFER]    = true;
 
         curl_setopt_array($handler, $options);
 
@@ -73,7 +74,7 @@ class Dispatcher implements DispatcherInterface
 
 
     /**
-     * @param ressource $handler
+     * @param resource $handler
      * @param string $string
      * @return int
      */
