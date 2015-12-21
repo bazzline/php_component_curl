@@ -1,7 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl;
+namespace Net\Bazzline\Component\Curl\Request;
 
+use Net\Bazzline\Component\Curl\FactoryInterface;
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsFormUtf8;
 use Net\Bazzline\Component\Curl\Option\Behaviour\SetTimeOutInSeconds;
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;

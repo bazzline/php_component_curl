@@ -7,10 +7,10 @@
 namespace Test\Net\Bazzline\Component\Curl;
 
 use Mockery;
-use Net\Bazzline\Component\Curl\Builder;
-use Net\Bazzline\Component\Curl\DispatcherInterface;
-use Net\Bazzline\Component\Curl\Request;
-use Net\Bazzline\Component\Curl\Response;
+use Net\Bazzline\Component\Curl\Builder\Builder;
+use Net\Bazzline\Component\Curl\Dispatcher\DispatcherInterface;
+use Net\Bazzline\Component\Curl\Request\Request;
+use Net\Bazzline\Component\Curl\Response\Response;
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 use PHPUnit_Framework_TestCase;
 
@@ -53,7 +53,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
      */
     protected function getMockOfTheDispatcher()
     {
-        return Mockery::mock('Net\Bazzline\Component\Curl\DispatcherInterface');
+        return Mockery::mock('Net\Bazzline\Component\Curl\Dispatcher\DispatcherInterface');
     }
 
     /**

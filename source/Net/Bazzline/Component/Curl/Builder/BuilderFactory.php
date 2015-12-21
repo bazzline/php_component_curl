@@ -3,7 +3,7 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2015-12-09
  */
-namespace Net\Bazzline\Component\Curl;
+namespace Net\Bazzline\Component\Curl\Builder;
 
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 

@@ -6,7 +6,7 @@
 
 namespace Test\Net\Bazzline\Component\Curl\ResponseBehaviour;
 
-use Net\Bazzline\Component\Curl\Response;
+use Net\Bazzline\Component\Curl\Response\Response;
 use Net\Bazzline\Component\Curl\ResponseBehaviour\ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviour;
 use RuntimeException;
 use Test\Net\Bazzline\Component\Curl\AbstractTestCase;

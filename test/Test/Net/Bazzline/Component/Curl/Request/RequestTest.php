@@ -4,11 +4,12 @@
  * @since: 2015-12-14
  */
 
-namespace Test\Net\Bazzline\Component\Curl;
+namespace Test\Net\Bazzline\Component\Curl\Request;
 
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsJson;
 use Net\Bazzline\Component\Curl\Option\Behaviour\SetTimeOutInSeconds;
 use stdClass;
+use Test\Net\Bazzline\Component\Curl\AbstractTestCase;
 
 class RequestTest extends AbstractTestCase
 {

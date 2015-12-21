@@ -4,10 +4,12 @@
  * @since: 2015-12-09
  */
 
-namespace Net\Bazzline\Component\Curl;
+namespace Net\Bazzline\Component\Curl\Request;
 
+use Net\Bazzline\Component\Curl\Dispatcher\DispatcherInterface;
 use Net\Bazzline\Component\Curl\HeadLine\HeadLineInterface;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
+use Net\Bazzline\Component\Curl\Response\Response;
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 
 class Request

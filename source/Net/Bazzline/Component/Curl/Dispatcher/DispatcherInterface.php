@@ -4,7 +4,9 @@
  * @since: 2015-12-14
  */
 
-namespace Net\Bazzline\Component\Curl;
+namespace Net\Bazzline\Component\Curl\Dispatcher;
+
+use Net\Bazzline\Component\Curl\Response\Response;
 
 interface DispatcherInterface
 {

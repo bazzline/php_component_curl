@@ -154,6 +154,11 @@ If you want to change this, you either have to extend the existing *Request* or 
                 * https://secure.php.net/manual/en/function.curl-multi-init.php
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
+* [0.7.0](https://github.com/bazzline/php_component_curl/tree/0.7.0) - released at 21.12.2015
+    * moved *Builder* into own namespace
+    * moved *Dispatcher* into own namespace
+    * moved *Request* into own namespace
+    * moved *Response* into own namespace
 * [0.6.1](https://github.com/bazzline/php_component_curl/tree/0.6.1) - released at 18.12.2015
     * added *Builder::withTheRawHeaderLine()* and *Builder::withTheRawOption()*
 * [0.6.0](https://github.com/bazzline/php_component_curl/tree/0.6.0) - released at 18.12.2015

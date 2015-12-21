@@ -6,7 +6,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Net\Bazzline\Component\Curl\BuilderFactory;
+use Net\Bazzline\Component\Curl\Builder\BuilderFactory;
 
 $factory    = new BuilderFactory();
 $builder    = $factory->create();

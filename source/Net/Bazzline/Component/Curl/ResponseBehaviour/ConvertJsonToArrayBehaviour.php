@@ -6,7 +6,7 @@
 namespace Net\Bazzline\Component\Curl\ResponseBehaviour;
 
 use Exception;
-use Net\Bazzline\Component\Curl\Response;
+use Net\Bazzline\Component\Curl\Response\Response;
 
 class ConvertJsonToArrayBehaviour implements ResponseBehaviourInterface
 {

@@ -3,7 +3,9 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2015-12-16
  */
-namespace Test\Net\Bazzline\Component\Curl;
+namespace Test\Net\Bazzline\Component\Curl\Builder;
+
+use Test\Net\Bazzline\Component\Curl\AbstractTestCase;
 
 class BuilderTest extends AbstractTestCase
 {

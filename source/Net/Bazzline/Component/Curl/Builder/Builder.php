@@ -3,12 +3,13 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2015-12-08
  */
-namespace Net\Bazzline\Component\Curl;
+namespace Net\Bazzline\Component\Curl\Builder;
 
 use Exception;
 use Net\Bazzline\Component\Curl\HeadLine\HeadLineInterface;
 use Net\Bazzline\Component\Curl\HeadLine\ContentTypeIsJson;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
+use Net\Bazzline\Component\Curl\Request\Request;
 use Net\Bazzline\Component\Curl\ResponseBehaviour\ConvertJsonToArrayBehaviour;
 use Net\Bazzline\Component\Curl\ResponseBehaviour\ResponseBehaviourInterface;
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;
