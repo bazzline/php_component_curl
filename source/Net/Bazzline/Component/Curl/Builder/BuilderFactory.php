@@ -5,6 +5,9 @@
  */
 namespace Net\Bazzline\Component\Curl\Builder;
 
+use Net\Bazzline\Component\Curl\FactoryInterface;
+use Net\Bazzline\Component\Curl\Request\Request;
+use Net\Bazzline\Component\Curl\Request\RequestFactory;
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 
 class BuilderFactory implements FactoryInterface
