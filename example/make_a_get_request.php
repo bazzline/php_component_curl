@@ -7,8 +7,10 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Net\Bazzline\Component\Curl\Builder\BuilderFactory;
+use Net\Bazzline\Component\Curl\Dispatcher\LoggingDispatcher;
 
 $factory    = new BuilderFactory();
+$factory->overwriteDispatcher(new LoggingDispatcher());
 $builder    = $factory->create();
 $url        = ($argc > 1) ? $argv[1] : 'https://httpbin.org/get';
 

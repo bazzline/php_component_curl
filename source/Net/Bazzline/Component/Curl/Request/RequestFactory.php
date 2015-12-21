@@ -3,6 +3,7 @@
 namespace Net\Bazzline\Component\Curl\Request;
 
 use Net\Bazzline\Component\Curl\Dispatcher\Dispatcher;
+use Net\Bazzline\Component\Curl\Dispatcher\DispatcherInterface;
 use Net\Bazzline\Component\Curl\FactoryInterface;
 use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsFormUtf8;
 use Net\Bazzline\Component\Curl\HeaderLine\HeaderLineInterface;
@@ -12,12 +13,15 @@ use Net\Bazzline\Component\Toolbox\HashMap\Merge;
 
 class RequestFactory implements FactoryInterface
 {
+    /** @var DispatcherInterface */
+    private $dispatcher;
+
     /**
      * @return mixed|Request
      */
     public function create()
     {
-        $request = new Request($this->getNewDispatcher(), new Merge());
+        $request = new Request($this->getDispatcher(), new Merge());
 
         //demonstration of using an object as header line
         foreach ($this->getDefaultHeaderLines() as $headLine) {
@@ -43,7 +47,29 @@ class RequestFactory implements FactoryInterface
     }
 
     /**
-     * @return Dispatcher
+     * @param DispatcherInterface $dispatcher
+     */
+    public function overwriteDispatcher(DispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
+    /**
+     * @return DispatcherInterface
+     */
+    protected function getDispatcher()
+    {
+        $createDispatcher = !($this->dispatcher instanceof  DispatcherInterface);
+
+        if ($createDispatcher) {
+            $this->dispatcher = $this->getNewDispatcher();
+        }
+
+        return $this->dispatcher;
+    }
+
+    /**
+     * @return DispatcherInterface
      */
     protected function getNewDispatcher()
     {

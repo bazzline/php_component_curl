@@ -154,7 +154,11 @@ If you want to change this, you either have to extend the existing *Request* or 
                 * https://secure.php.net/manual/en/function.curl-multi-init.php
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
+            * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
 * [0.7.0](https://github.com/bazzline/php_component_curl/tree/0.7.0) - released at 21.12.2015
+    * added *overwriteDispatcher* method into *BuilderFactory* and *RequestFactory*
+    * created *LoggingDispatcher* (basic standard out logging - you can overwrite this behaviour)
+    * implemented usage of *LoggingDispatcher* in the examples
     * moved *Builder* into own namespace
     * moved *Dispatcher* into own namespace
     * moved *Request* into own namespace
