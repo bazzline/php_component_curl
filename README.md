@@ -159,6 +159,8 @@ If you want to change this, you either have to extend the existing *Request* or 
     * moved *Dispatcher* into own namespace
     * moved *Request* into own namespace
     * moved *Response* into own namespace
+    * refactored *RequestFactory* by extracting all header lines or options into protected methods
+    * renamed *HeadLine* into *HeaderLine*
 * [0.6.1](https://github.com/bazzline/php_component_curl/tree/0.6.1) - released at 18.12.2015
     * added *Builder::withTheRawHeaderLine()* and *Builder::withTheRawOption()*
 * [0.6.0](https://github.com/bazzline/php_component_curl/tree/0.6.0) - released at 18.12.2015

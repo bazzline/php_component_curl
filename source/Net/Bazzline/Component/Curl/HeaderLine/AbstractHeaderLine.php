@@ -1,8 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\HeadLine;
+namespace Net\Bazzline\Component\Curl\HeaderLine;
 
-abstract class AbstractHeadLine implements HeadLineInterface
+abstract class AbstractHeaderLine implements HeaderLineInterface
 {
     /**
      * @return string

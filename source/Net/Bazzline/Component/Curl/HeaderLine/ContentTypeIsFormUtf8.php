@@ -1,6 +1,6 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\HeadLine;
+namespace Net\Bazzline\Component\Curl\HeaderLine;
 
 class ContentTypeIsFormUtf8 extends AbstractContentType
 {

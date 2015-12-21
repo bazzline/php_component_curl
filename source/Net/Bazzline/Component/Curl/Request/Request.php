@@ -7,7 +7,7 @@
 namespace Net\Bazzline\Component\Curl\Request;
 
 use Net\Bazzline\Component\Curl\Dispatcher\DispatcherInterface;
-use Net\Bazzline\Component\Curl\HeadLine\HeadLineInterface;
+use Net\Bazzline\Component\Curl\HeaderLine\HeaderLineInterface;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
 use Net\Bazzline\Component\Curl\Response\Response;
 use Net\Bazzline\Component\Toolbox\HashMap\Merge;
@@ -67,9 +67,9 @@ class Request
     }
 
     /**
-     * @param HeadLineInterface $line
+     * @param HeaderLineInterface $line
      */
-    public function addHeaderLine(HeadLineInterface $line)
+    public function addHeaderLine(HeaderLineInterface $line)
     {
         $this->headerLines[] = $line->line();
     }

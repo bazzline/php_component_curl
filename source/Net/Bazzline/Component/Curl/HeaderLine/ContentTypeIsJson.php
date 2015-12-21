@@ -1,6 +1,6 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\HeadLine;
+namespace Net\Bazzline\Component\Curl\HeaderLine;
 
 class ContentTypeIsJson extends AbstractContentType
 {

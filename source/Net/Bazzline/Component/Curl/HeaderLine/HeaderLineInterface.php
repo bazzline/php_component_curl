@@ -3,9 +3,9 @@
  * @author stev leibelt <artodeto@bazzline.net>
  * @since 2015-12-08
  */
-namespace Net\Bazzline\Component\Curl\HeadLine;
+namespace Net\Bazzline\Component\Curl\HeaderLine;
 
-interface HeadLineInterface
+interface HeaderLineInterface
 {
     /**
      * @return string

@@ -1,8 +1,8 @@
 <?php
 
-namespace Net\Bazzline\Component\Curl\HeadLine;
+namespace Net\Bazzline\Component\Curl\HeaderLine;
 
-abstract class AbstractContentType extends AbstractHeadLine
+abstract class AbstractContentType extends AbstractHeaderLine
 {
     /**
      * @return string
