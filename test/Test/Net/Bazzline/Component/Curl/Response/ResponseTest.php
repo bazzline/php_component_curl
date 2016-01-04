@@ -8,7 +8,7 @@ namespace Test\Net\Bazzline\Component\Curl;
 
 class ResponseTest extends AbstractTestCase
 {
-    public function testHeaderLine()
+    public function testHeaderLineWithExistingPrefixes()
     {
         $content        = 'the content';
         $contentType    = 'the content type';
@@ -25,6 +25,23 @@ class ResponseTest extends AbstractTestCase
         foreach ($headerLines as $prefix => $suffix) {
             $this->assertEquals($suffix, $response->headerLine($prefix));
         }
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage no headline available for prefix: "foobar"
+     */
+    public function testHeaderLineWithNotExistingPrefixes()
+    {
+        $content        = 'the content';
+        $contentType    = 'the content type';
+        $error          = 'this is an error';
+        $errorCode      = __LINE__;
+        $headerLines = array();
+        $statusCode     = __LINE__;
+
+        $response = $this->getNewResponse($content, $contentType, $error, $errorCode, $headerLines, $statusCode);
+
         $this->assertEquals(null, $response->headerLine('foobar'));
     }
 

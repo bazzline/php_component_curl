@@ -6,6 +6,8 @@
 
 namespace Net\Bazzline\Component\Curl\Response;
 
+use InvalidArgumentException;
+
 class Response
 {
     const ARRAY_KEY_CONTENT         = 'content';
@@ -69,14 +71,19 @@ class Response
     /**
      * @param string $prefix
      * @return null|string
+     * @throws InvalidArgumentException
      */
     public function headerLine($prefix)
     {
-        return (
-            (isset($this->headerLines[$prefix]))
-                ? $this->headerLines[$prefix]
-                : null
-        );
+        $valueIsNotAvailable = (!isset($this->headerLines[$prefix]));
+
+        if ($valueIsNotAvailable) {
+            throw new InvalidArgumentException(
+                'no headline available for prefix: "' . $prefix . '"'
+            );
+        }
+
+        return $this->headerLines[$prefix];
     }
 
     /**
