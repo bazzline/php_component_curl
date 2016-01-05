@@ -2,9 +2,9 @@
 
 namespace Net\Bazzline\Component\Curl\Option\Security;
 
-use Net\Bazzline\Component\Curl\Option\AbstractSetOptionIntValue;
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionToFalse;
 
-class SetSslVerifyHost extends AbstractSetOptionIntValue
+class DisableSslVerifyHost extends AbstractSetOptionToFalse
 {
     /**
      * @return int

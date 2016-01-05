@@ -2,9 +2,9 @@
 
 namespace Net\Bazzline\Component\Curl\Option\Security;
 
-use Net\Bazzline\Component\Curl\Option\AbstractSetOptionToTrue;
+use Net\Bazzline\Component\Curl\Option\AbstractSetOptionToFalse;
 
-class EnableSslVerifyPeer extends AbstractSetOptionToTrue
+class DisableSslVerifyPeer extends AbstractSetOptionToFalse
 {
     /**
      * @return int

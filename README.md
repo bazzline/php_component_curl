@@ -155,6 +155,9 @@ If you want to change this, you either have to extend the existing *Request* or 
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
+* [0.9.0](https://github.com/bazzline/php_component_curl/tree/0.9.0) - released at 05.01.2016
+    * renamed *EnableSslVerifyPeer* to *DisableSslVerifyPeer*
+    * renamed *SetSslVerifyHost* to *DisableSslVerifyHost*
 * [0.8.0](https://github.com/bazzline/php_component_curl/tree/0.8.0) - released at 05.01.2016
     * *Response::headerLine()* is now throwing an *\InvalidArgumentException* instead of returning *null* when a not existing *$prefix* is provided
 * [0.7.0](https://github.com/bazzline/php_component_curl/tree/0.7.0) - released at 21.12.2015
