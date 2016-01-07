@@ -222,4 +222,4 @@ If you want to change this, you either have to extend the existing *Request* or 
 
 # Final Words
 
-Star it if you like it :-). Add issues if you need it. Pull patches if you enjoy it. Write a blog entry if you use it :-D.
+Star it if you like it :-). Add issues if you need it. Pull patches if you enjoy it. Write a blog entry if you use it. Donate something if you love it :-].
