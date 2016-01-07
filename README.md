@@ -1,6 +1,6 @@
 # Simple Curl Wrapper Component for PHP
 
-This project aims to deliver an easy to use and free as in freedom object oriented php curl command component..
+This project aims to deliver an easy to use and free as in freedom object oriented php curl command component.
 
 The build status of the current master branch is tracked by Travis CI:
 [![Build Status](https://travis-ci.org/bazzline/php_component_curl.png?branch=master)](http://travis-ci.org/bazzline/php_component_curl)
@@ -35,10 +35,14 @@ $response = $builder->usePost()
     ->onTheUrl($url)
     ->withTheData($data)
     ->withTheParameters(array('descendingOrderBy' => 'id'))
-    //->withTheHeaderLine($headLine)    //add the headline you want
     ->withTheOption($timeout)
-    //->withResponseModifier($modifier) //add the response modifier you want
     ->andFetchTheResponse();
+
+/** 
+ * you can also use 
+ * $builder->withTheHeaderLine($headLine)    //add the headline you want
+ * $builder->withResponseModifier($modifier) //add the response modifier you want
+ */
 
 echo 'content: ' . $response->content() . PHP_EOL;
 echo 'content type: ' . $response->contentType() . PHP_EOL;
@@ -76,10 +80,10 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
 
 # Terms
 
-* [Dispatcher](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Dispatcher.php)
+* [Dispatcher](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Dispatcher/Dispatcher.php)
     * doing the curl request
     * if you want to use pure curl, use this class
-* [Request](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Request.php)
+* [Request](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Request/Request.php)
     * object oriented approach reflecting the request
     * [HeadLine](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/HeadLine/HeadLineInterface.php)
         * object oriented http headers, start a pull request if you need more
@@ -89,13 +93,13 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
         * all the parameters you want to add to your url - they are urlencoded automatically
     * Url
         * the url of your endpoint
-* [Response](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Response.php)
+* [Response](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Response/Response.php)
     * object oriented approach reflecting the response
     * [ResponseBehaviour](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/ResponseBehaviour/ResponseBehaviourInterface.php)
         * interface to interact with the response
             * either modify the response (by creating a new one)
             * change the flow by throwing an exception if the response does not fits your needs (as example)
-* [Builder](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Builder.php)
+* [Builder](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Builder/Builder.php)
     * provides a fluent interface to easy up using curl
     * it takes care of all :-)
 
@@ -155,6 +159,7 @@ If you want to change this, you either have to extend the existing *Request* or 
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
+        * fixed broken links in the readme
 * [0.9.0](https://github.com/bazzline/php_component_curl/tree/0.9.0) - released at 05.01.2016
     * renamed *EnableSslVerifyPeer* to *DisableSslVerifyPeer*
     * renamed *SetSslVerifyHost* to *DisableSslVerifyHost*
@@ -199,7 +204,7 @@ If you want to change this, you either have to extend the existing *Request* or 
 * [0.2.0](https://github.com/bazzline/php_component_curl/tree/0.2.0) - released at 14.12.2015
     * fixed issue in [Response::contentType()](https://github.com/bazzline/php_component_curl/commit/42841811e848628539b088af894410524cd61a68)
     * fixed styles
-    * added [dispatcher interface](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/DispatcherInterface.php)
+    * added [dispatcher interface](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Dispatcher/DispatcherInterface.php)
     * added scrutinizer, travis-ci and version eye status
     * added support for scrutinizer and travis-ci
     * added support for url as optional argument in example scripts
