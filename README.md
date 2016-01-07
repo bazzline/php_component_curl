@@ -12,7 +12,6 @@ The scrutinizer status are:
 The versioneye status is:
 [![Dependency Status](https://www.versioneye.com/user/projects/553941560b24225ef6000002/badge.svg?style=flat)](https://www.versioneye.com/user/projects/553941560b24225ef6000002)
 
-@todo
 Take a look on [openhub.net](https://www.openhub.net/p/php_component_curl).
 
 This component is not developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
