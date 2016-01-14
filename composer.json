@@ -5,12 +5,12 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "net_bazzline/php_component_toolbox": "1.8.0",
+        "net_bazzline/php_component_toolbox": "1.8.*",
         "php": ">=5.3.3"
     },
     "require-dev": {
         "mockery/mockery": "0.9.4",
-        "phpunit/phpunit": "~4.8||~5.0"
+        "phpunit/phpunit": "~4.8||~5.1"
     },
     "license": "LGPLv3",
     "authors": [

@@ -159,6 +159,8 @@ If you want to change this, you either have to extend the existing *Request* or 
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * fixed broken links in the readme
+* [0.9.1](https://github.com/bazzline/php_component_curl/tree/0.9.1) - released at 14.01.2016
+    * updated dependencies
 * [0.9.0](https://github.com/bazzline/php_component_curl/tree/0.9.0) - released at 05.01.2016
     * renamed *EnableSslVerifyPeer* to *DisableSslVerifyPeer*
     * renamed *SetSslVerifyHost* to *DisableSslVerifyHost*
