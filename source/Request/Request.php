@@ -205,25 +205,13 @@ class Request
     }
 
     /**
-     * @param string $url
-     * @param string $method
-     * @param null|array $parameters
-     * @param null|string|array $data
-     * @return Response
+     * @param array $options
+     * @param mixed $data
+     * @return array
      */
-    private function execute($url, $method, array $parameters = array(), $data = null)
+    private function addDataToTheOptionsIfDataIsValid(array $options, $data)
     {
-        $areParametersProvided  = (!empty($parameters));
-        $dispatcher             = $this->dispatcher;
-        $merge                  = $this->merge;
-        $headerLines            = $merge($this->headerLines, $this->defaultHeaderLines);
-        $isDataProvided         = (!is_null($data));
-        $options                = $merge($this->options, $this->defaultOptions);
-        $headerLines[]          = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
-
-        $options[CURLOPT_CUSTOMREQUEST]     = $method; //@see: http://tr.php.net/curl_setopt#109634
-        $options[CURLOPT_HTTPHEADER]        = $headerLines;
-        //@todo what about binary transfer?
+        $isDataProvided = (!is_null($data));
 
         if ($isDataProvided) {
             $dataIsNotFromTypeScalar   = (!is_scalar($data));
@@ -239,6 +227,18 @@ class Request
             }
         }
 
+        return $options;
+    }
+
+    /**
+     * @param array $parameters
+     * @param string $url
+     * @return string
+     */
+    private function addParametersToTheUrlIfParametersAreProvided(array $parameters, $url)
+    {
+        $areParametersProvided = (!empty($parameters));
+
         if ($areParametersProvided) {
             $parametersAsString     = http_build_query($parameters);
             $isParameterStringValid = (strlen($parametersAsString) > 0);
@@ -252,7 +252,35 @@ class Request
             $urlWithParameters = $url;
         }
 
-        $response = $dispatcher->dispatch($urlWithParameters, $options);
+        return $urlWithParameters;
+    }
+
+    /**
+     * @param string $url
+     * @param string $method
+     * @param null|array $parameters
+     * @param null|string|array $data
+     * @return Response
+     */
+    private function execute($url, $method, array $parameters = array(), $data = null)
+    {
+        //begin of dependencies
+        $dispatcher             = $this->dispatcher;
+        $merge                  = $this->merge;
+        $headerLines            = $merge($this->headerLines, $this->defaultHeaderLines);
+        $options                = $merge($this->options, $this->defaultOptions);
+        $headerLines[]          = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
+        //end of dependencies
+
+        //begin of business logic
+        $options[CURLOPT_CUSTOMREQUEST] = $method; //@see: http://tr.php.net/curl_setopt#109634
+        $options[CURLOPT_HTTPHEADER]    = $headerLines;
+        //@todo what about binary transfer?
+
+        $options            = $this->addDataToTheOptionsIfDataIsValid($options, $data);
+        $urlWithParameters  = $this->addParametersToTheUrlIfParametersAreProvided($parameters, $url);
+        $response           = $dispatcher->dispatch($urlWithParameters, $options);
+        //end of business logic
 
         return $response;
     }
