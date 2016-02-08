@@ -166,6 +166,7 @@ If you want to change this, you either have to extend the existing *Request* or 
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
+    * refactored internals of RequestFactory::create()
 * [0.10.0](https://github.com/bazzline/php_component_curl/tree/0.10.0) - released at 08.02.2016
     * added public *overwriteRequestFactory()* to *BuilderFactory*
     * fixed broken links in the readme
