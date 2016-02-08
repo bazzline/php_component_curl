@@ -62,7 +62,7 @@ class BuilderFactory implements FactoryInterface
         }
 
         if ($isValidDispatcher) {
-            $factory->overwriteDispatcher($dispatcher);
+            $this->factory->overwriteDispatcher($dispatcher);
         }
 
         $factory = $this->factory;

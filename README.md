@@ -170,6 +170,7 @@ If you want to change this, you either have to extend the existing *Request* or 
         * create Request Options Domain Object
 * [0.12.0](https://github.com/bazzline/php_component_curl/tree/0.12.0) - released at 08.02.2016
     * added *curl_close($handler)* in default *Dispatcher*
+    * fixed bug in *BuilderFactory::createRequestFromFactory()*
 * [0.11.0](https://github.com/bazzline/php_component_curl/tree/0.11.0) - released at 08.02.2016
     * fixed major bug in *createRequestFromFactory* to *BuilderFactory*
     * refactored internals of Builder::andFetchTheResponse()
