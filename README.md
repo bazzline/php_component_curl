@@ -170,6 +170,7 @@ If you want to change this, you either have to extend the existing *Request* or 
     * added public *overwriteRequestFactory()* to *BuilderFactory*
     * fixed broken links in the readme
     * moved to *psr-4* autoloading
+    * removed dedicated integration test for php 5.3.3
 * [0.9.1](https://github.com/bazzline/php_component_curl/tree/0.9.1) - released at 14.01.2016
     * updated dependencies
 * [0.9.0](https://github.com/bazzline/php_component_curl/tree/0.9.0) - released at 05.01.2016
