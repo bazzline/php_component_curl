@@ -168,11 +168,11 @@ If you want to change this, you either have to extend the existing *Request* or 
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
+* [0.11.0](https://github.com/bazzline/php_component_curl/tree/0.11.0) - released at 08.02.2016
+    * fixed major bug in *createRequestFromFactory* to *BuilderFactory*
     * refactored internals of Builder::andFetchTheResponse()
     * refactored internals of Request::execute()
     * refactored internals of RequestFactory::create()
-* [0.11.0](https://github.com/bazzline/php_component_curl/tree/0.11.0) - released at 08.02.2016
-    * fixed major bug in *createRequestFromFactory* to *BuilderFactory*
 * [0.10.0](https://github.com/bazzline/php_component_curl/tree/0.10.0) - released at 08.02.2016
     * added public *overwriteRequestFactory()* to *BuilderFactory*
     * fixed broken links in the readme
