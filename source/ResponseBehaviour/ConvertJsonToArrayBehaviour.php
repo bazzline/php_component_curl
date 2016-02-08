@@ -11,6 +11,9 @@ use Net\Bazzline\Component\Curl\Response\Response;
 class ConvertJsonToArrayBehaviour implements ResponseBehaviourInterface
 {
     /**
+     * Since the Response is immutable, each behaviour has to return a new
+     *  Response instance
+     *
      * @param Response $response
      * @return Response
      * @throws Exception

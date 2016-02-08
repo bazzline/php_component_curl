@@ -70,45 +70,29 @@ class Builder
      */
     public function andFetchTheResponse()
     {
+        //begin of dependencies
         $asJson     = $this->asJson;
         $merge      = $this->merge;
-        /** @var ResponseBehaviourInterface[] $behaviours */
-        $behaviours = $merge($this->responseBehaviours, $this->defaultResponseBehaviours);
         $data       = $this->data;
         $method     = $this->method;
         $parameters = $this->parameters;
         $request    = $this->request;
         $url        = $this->url;
+        //end of dependencies
 
-        if ($asJson) {
-            $data = json_encode($data);
-        }
-
-        switch ($method) {
-            case self::METHOD_DELETE:
-                $response = $request->delete($url, $parameters);
-                break;
-            case self::METHOD_GET:
-                $response = $request->get($url, $parameters);
-                break;
-            case self::METHOD_PATCH:
-                $response = $request->patch($url, $parameters, $data);
-                break;
-            case self::METHOD_POST:
-                $response = $request->post($url, $parameters, $data);
-                break;
-            case self::METHOD_PUT:
-                $response = $request->put($url, $parameters, $data);
-                break;
-            default:
-                throw new RuntimeException(
-                    'no http method set'
-                );
-        }
-
-        foreach ($behaviours as $behaviour) {
-            $response = $behaviour->behave($response);
-        }
+        //begin of business logic
+        /** @var ResponseBehaviourInterface[] $behaviours */
+        $behaviours = $merge($this->responseBehaviours, $this->defaultResponseBehaviours);
+        $data       = $this->convertToJsonIfNeeded($data, $asJson);
+        $response   = $this->fetchResponseFromRequestOrThrowRuntimeException(
+            $method,
+            $request,
+            $url,
+            $parameters,
+            $data
+        );
+        $response   = $this->applyBehaviours($behaviours, $response);
+        //end of business logic
 
         return $response;
     }
@@ -280,5 +264,65 @@ class Builder
         $this->method = self::METHOD_PUT;
 
         return $this;
+    }
+
+    /**
+     * @param array|ResponseBehaviourInterface[] $behaviours
+     * @param Response $response
+     * @return Response
+     */
+    private function applyBehaviours(array $behaviours, Response $response)
+    {
+        foreach ($behaviours as $behaviour) {
+            $response = $behaviour->behave($response);
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param mixed $data
+     * @param boolean $convertIt
+     * @return mixed
+     */
+    private function convertToJsonIfNeeded($data, $convertIt)
+    {
+        return ($convertIt) ? json_encode($data) : $data;
+    }
+
+    /**
+     * @param string $method
+     * @param Request $request
+     * @param string $url
+     * @param array $parameters
+     * @param mixed $data
+     * @return Response
+     * @throws RuntimeException
+     */
+    private function fetchResponseFromRequestOrThrowRuntimeException($method, Request $request, $url, array $parameters, $data)
+    {
+        switch ($method) {
+            case self::METHOD_DELETE:
+                $response = $request->delete($url, $parameters);
+                break;
+            case self::METHOD_GET:
+                $response = $request->get($url, $parameters);
+                break;
+            case self::METHOD_PATCH:
+                $response = $request->patch($url, $parameters, $data);
+                break;
+            case self::METHOD_POST:
+                $response = $request->post($url, $parameters, $data);
+                break;
+            case self::METHOD_PUT:
+                $response = $request->put($url, $parameters, $data);
+                break;
+            default:
+                throw new RuntimeException(
+                    'no http method set'
+                );
+        }
+
+        return $response;
     }
 }

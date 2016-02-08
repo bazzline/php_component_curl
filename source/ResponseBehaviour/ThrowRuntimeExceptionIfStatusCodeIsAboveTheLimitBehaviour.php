@@ -23,6 +23,9 @@ class ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviour implements Respo
     }
 
     /**
+     * Since the Response is immutable, each behaviour has to return a new
+     *  Response instance
+     *
      * @param Response $response
      * @return Response
      * @throws Exception|RuntimeException
