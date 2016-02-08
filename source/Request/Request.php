@@ -43,7 +43,12 @@ class Request
      * @param DispatcherInterface $dispatcher
      * @param Merge $merge
      * @param array $defaultHeaderLines
+     *  <int> => <value>
      * @param array $defaultOptions
+     *  either:
+     *      <int> => <value>
+     *  or:
+     *      <identifier> => <value>
      */
     public function __construct(DispatcherInterface $dispatcher, Merge $merge, array $defaultHeaderLines = array(), array $defaultOptions = array())
     {

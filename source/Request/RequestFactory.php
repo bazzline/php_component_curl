@@ -21,12 +21,22 @@ class RequestFactory implements FactoryInterface
      */
     public function create()
     {
-        $request = new Request($this->getDispatcher(), new Merge());
+        $defaultHeaderLines = $this->createDefaultHeaderLines(
+            $this->getDefaultRawHeaderLine(),
+            $this->getDefaultHeaderLines()
+        );
 
-        $request = $this->addDefaultHeaderLines($this->getDefaultHeaderLines(), $request);
-        $request = $this->addDefaultRawHeaderLines($this->getDefaultRawHeaderLine(), $request);
-        $request = $this->addDefaultOptions($this->getDefaultOptions(), $request);
-        $request = $this->addDefaultRawOptions($this->getDefaultRawOptions(), $request);
+        $defaultOptions     = $this->createDefaultOptions(
+            $this->getDefaultRawOptions(),
+            $this->getDefaultOptions()
+        );
+
+        $request = new Request(
+            $this->getDispatcher(),
+            new Merge(),
+            $defaultHeaderLines,
+            $defaultOptions
+        );
 
         return $request;
     }
@@ -104,62 +114,34 @@ class RequestFactory implements FactoryInterface
     }
 
     /**
+     * @param array $rawHeaderLines
      * @param array|HeaderLineInterface[] $headerLines
-     * @param Request $request
-     * @return Request
+     * @return array
      */
-    private function addDefaultHeaderLines(array $headerLines, Request $request)
+    private function createDefaultHeaderLines(array $rawHeaderLines, array $headerLines)
     {
-        //demonstration of using an object as header line
-        foreach ($headerLines as $headLine) {
-            $request->addHeaderLine($headLine);
+        $defaultHeaderLines = $rawHeaderLines;
+
+        foreach ($headerLines as $headerLine) {
+            $defaultHeaderLines[] = $headerLine->line();
         }
 
-        return $request;
+        return $defaultHeaderLines;
     }
 
     /**
-     * @param array $headerLines
-     * @param Request $request
-     * @return Request
-     */
-    private function addDefaultRawHeaderLines(array $headerLines, Request $request)
-    {
-        //demonstration of using strings as header lines
-        foreach ($headerLines as $headLine) {
-            $request->addRawHeaderLine($headLine);
-        }
-
-        return $request;
-    }
-
-    /**
+     * @param array $rawOptions
      * @param array|OptionInterface[] $options
-     * @param Request $request
-     * @return Request
+     * @return array
      */
-    private function addDefaultOptions(array $options, Request $request)
+    private function createDefaultOptions(array $rawOptions, array $options)
     {
-        //demonstration of using an object as option
+        $defaultOptions = $rawOptions;
+
         foreach ($options as $option) {
-            $request->addOption($option);
+            $defaultOptions[$option->identifier()] = $option->value();
         }
 
-        return $request;
-    }
-
-    /**
-     * @param array $options
-     * @param Request $request
-     * @return Request
-     */
-    private function addDefaultRawOptions(array $options, Request $request)
-    {
-        //demonstration of using predefined constants
-        foreach ($this->getDefaultRawOptions() as $key => $value) {
-            $request->addRawOption($key, $value);
-        }
-
-        return $request;
+        return $defaultOptions;
     }
 }
