@@ -54,18 +54,18 @@ class BuilderFactory implements FactoryInterface
     protected function createRequestFromFactory()
     {
         $dispatcher         = $this->dispatcher;
-        $factory            = $this->factory;
-        $isInvalidFactory   = ($this->factory instanceof RequestFactory);
+        $isInvalidFactory   = (!($this->factory instanceof RequestFactory));
         $isValidDispatcher  = ($dispatcher instanceof DispatcherInterface);
 
         if ($isInvalidFactory) {
             $this->factory  = new RequestFactory();
-            $factory        = $this->factory;
         }
 
         if ($isValidDispatcher) {
             $factory->overwriteDispatcher($dispatcher);
         }
+
+        $factory = $this->factory;
 
         return $factory->create();
     }
