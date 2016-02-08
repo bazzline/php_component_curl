@@ -42,6 +42,7 @@ class Dispatcher implements DispatcherInterface
         $statusCode     = curl_getinfo($handler, CURLINFO_HTTP_CODE);
         //@todo investigate if needed http://www.ivangabriele.com/php-how-to-use-4-methods-delete-get-post-put-in-a-restful-api-client-using-curl/
         //@todo how to handle response code 100 - other header? - http://stackoverflow.com/a/23939785
+        curl_close($handler);
 
         return new Response($content, $contentType, $error, $errorCode, $this->headerLines, $statusCode);
     }
