@@ -16,12 +16,18 @@ class BuilderFactory implements FactoryInterface
     /** @var DispatcherInterface */
     private $dispatcher;
 
+    /** @var RequestFactory */
+    private $factory;
+
     /**
      * @return Builder|mixed
      */
     public function create()
     {
-        $builder = new Builder($this->getRequest(), new Merge());
+        $builder = new Builder(
+            $this->createRequestFromFactory(),
+            new Merge()
+        );
 
         return $builder;
     }
@@ -35,13 +41,27 @@ class BuilderFactory implements FactoryInterface
     }
 
     /**
+     * @param RequestFactory $factory
+     */
+    public function overwriteRequestFactory(RequestFactory $factory)
+    {
+        $this->factory = $factory;
+    }
+
+    /**
      * @return Request
      */
-    protected function getRequest()
+    protected function createRequestFromFactory()
     {
         $dispatcher         = $this->dispatcher;
-        $factory            = new RequestFactory();
+        $factory            = $this->factory;
+        $isInvalidFactory   = ($this->factory instanceof RequestFactory);
         $isValidDispatcher  = ($dispatcher instanceof DispatcherInterface);
+
+        if ($isInvalidFactory) {
+            $this->factory  = new RequestFactory();
+            $factory        = $this->factory;
+        }
 
         if ($isValidDispatcher) {
             $factory->overwriteDispatcher($dispatcher);
