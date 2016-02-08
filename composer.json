@@ -1,7 +1,21 @@
 {
     "name": "net_bazzline/php_component_curl",
     "description": "free as in freedom simple object oriented curl request and response component (YACC - yet another curl component)",
-    "keywords": ["curl", "oop", "yet another", "request", "response", "dispatcher", "lgpl", "free as in freedom", "yacc", "php7"],
+    "keywords": [
+        "bazzline",
+        "psr",
+        "psr-4",
+        "curl",
+        "oop",
+        "yet another",
+        "request",
+        "response",
+        "dispatcher",
+        "lgpl",
+        "free as in freedom",
+        "yacc",
+        "php7"
+    ],
     "type": "library",
     "minimum-stability": "dev",
     "require": {
@@ -12,7 +26,7 @@
         "mockery/mockery": "0.9.4",
         "phpunit/phpunit": "~4.8||~5.1"
     },
-    "license": "LGPLv3",
+    "license": "LGPL-3.0",
     "authors": [
         {
             "name": "Stev Leibelt",
@@ -22,9 +36,13 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Net\\Bazzline\\Component\\Curl": "source/",
-            "Test\\Net\\Bazzline\\Component\\Curl": "test/"
+        "psr-4": {
+            "Net\\Bazzline\\Component\\Curl\\": "source/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\Net\\Bazzline\\Component\\Curl\\": "test/"
         }
     }
 }
