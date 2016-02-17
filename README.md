@@ -168,6 +168,8 @@ If you want to change this, you either have to extend the existing *Request* or 
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
+* [0.13.0](https://github.com/bazzline/php_component_curl/tree/0.13.0) - released at 17.02.2016
+    * fixed "ConverteJsonToArayBehaviour" by merging [pull request 3](https://github.com/bazzline/php_component_curl/pull/3)
 * [0.12.0](https://github.com/bazzline/php_component_curl/tree/0.12.0) - released at 08.02.2016
     * added *curl_close($handler)* in default *Dispatcher*
     * fixed bug in *BuilderFactory::createRequestFromFactory()*
