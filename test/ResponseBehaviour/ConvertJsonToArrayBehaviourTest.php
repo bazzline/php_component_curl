@@ -17,7 +17,7 @@ class ConvertJsonToArrayBehaviourTest extends AbstractTestCase
         $response           = $this->getNewResponse();
 
         $behavedResponse    = $behaviour->behave($response);
-        $expectedContent    = json_encode($response->content());
+        $expectedContent    = json_decode($response->content(), true);
 
         $this->assertEquals($expectedContent, $behavedResponse->content());
     }
