@@ -79,11 +79,11 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
 
 ## Executable Examples
 
-* [Delete Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request.php)
-* [Get Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request.php)
-* [Patch Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_patch_request.php)
-* [Post Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_post_request.php)
-* [Put Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_put_request.php)
+* [Delete Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request)
+* [Get Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_delete_request)
+* [Patch Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_patch_request)
+* [Post Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_post_request)
+* [Put Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_put_request)
 
 # Terms
 
