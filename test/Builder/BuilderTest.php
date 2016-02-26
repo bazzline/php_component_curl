@@ -42,7 +42,7 @@ class BuilderTest extends AbstractTestCase
                 $this->getUrl(),
                 $this->buildDispatcherOptions(
                     'PUT',
-                    array('Content-Type: application/json'),
+                    array('Content-Type: application/json; charset=UTF-8'),
                     array(),
                     json_encode(null)
                 )
