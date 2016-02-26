@@ -24,7 +24,7 @@
     },
     "require-dev": {
         "mockery/mockery": "0.9.4",
-        "phpunit/phpunit": "~4.8||~5.1"
+        "phpunit/phpunit": "~4.8||~5.2"
     },
     "license": "LGPL-3.0",
     "authors": [
