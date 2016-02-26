@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * @author stev leibelt <artodeto@bazzline.net>
@@ -15,7 +16,7 @@ $builder    = $factory->create();
 $url        = ($argc > 1) ? $argv[1] : 'https://httpbin.org/get';
 
 $response = $builder->onTheUrl($url)
-    ->usePost()
+    ->usePut()
     ->andFetchTheResponse();
 
 echo 'content: ' . $response->content() . PHP_EOL;

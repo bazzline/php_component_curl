@@ -168,6 +168,7 @@ If you want to change this, you either have to extend the existing *Request* or 
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
+    * removed *.php* for examples and made them executable
     * updated dependencies
 * [0.14.0](https://github.com/bazzline/php_component_curl/tree/0.14.0) - released at 26.02.2016
     * removed default header "application/x-www-form-urlencoded; charset=UTF-8" and added new *ContentTypeUtf8Html*
