@@ -6,7 +6,7 @@
 
 namespace Test\Net\Bazzline\Component\Curl\Request;
 
-use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsJson;
+use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsUtf8Json;
 use Net\Bazzline\Component\Curl\Option\Behaviour\SetTimeOutInSeconds;
 use stdClass;
 use Test\Net\Bazzline\Component\Curl\AbstractTestCase;
@@ -153,7 +153,7 @@ class RequestTest extends AbstractTestCase
     public function testAddHeaderLine()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
-        $headerLine     = new ContentTypeIsJson();
+        $headerLine     = new ContentTypeIsUtf8Json();
         $request        = $this->getNewRequest($dispatcher, array(), array());
         $response       = $this->getNewResponse();
 

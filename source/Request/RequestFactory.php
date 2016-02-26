@@ -5,7 +5,7 @@ namespace Net\Bazzline\Component\Curl\Request;
 use Net\Bazzline\Component\Curl\Dispatcher\Dispatcher;
 use Net\Bazzline\Component\Curl\Dispatcher\DispatcherInterface;
 use Net\Bazzline\Component\Curl\FactoryInterface;
-use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsFormUtf8;
+use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsUtf8Form;
 use Net\Bazzline\Component\Curl\HeaderLine\HeaderLineInterface;
 use Net\Bazzline\Component\Curl\Option\Behaviour\SetTimeOutInSeconds;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
@@ -76,9 +76,7 @@ class RequestFactory implements FactoryInterface
      */
     protected function getDefaultHeaderLines()
     {
-        return array(
-            new ContentTypeIsFormUtf8()
-        );
+        return array();
     }
 
     /**

@@ -7,7 +7,7 @@ namespace Net\Bazzline\Component\Curl\Builder;
 
 use Exception;
 use Net\Bazzline\Component\Curl\HeaderLine\HeaderLineInterface;
-use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsJson;
+use Net\Bazzline\Component\Curl\HeaderLine\ContentTypeIsUtf8Json;
 use Net\Bazzline\Component\Curl\Option\OptionInterface;
 use Net\Bazzline\Component\Curl\Request\Request;
 use Net\Bazzline\Component\Curl\Response\Response;
@@ -103,7 +103,7 @@ class Builder
     public function asJson()
     {
         $this->asJson = true;
-        $this->request->addHeaderLine(new ContentTypeIsJson());
+        $this->request->addHeaderLine(new ContentTypeIsUtf8Json());
         $this->responseBehaviours[] = new ConvertJsonToArrayBehaviour();
 
         return $this;

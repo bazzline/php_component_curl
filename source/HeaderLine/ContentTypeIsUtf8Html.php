@@ -2,13 +2,13 @@
 
 namespace Net\Bazzline\Component\Curl\HeaderLine;
 
-class ContentTypeIsFormUtf8 extends AbstractContentType
+class ContentTypeIsUtf8Html extends AbstractContentType
 {
     /**
      * @return string
      */
     protected function suffix()
     {
-        return 'application/x-www-form-urlencoded; charset=UTF-8';
+        return 'text/html; charset=UTF-8';
     }
 }
