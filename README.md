@@ -169,6 +169,8 @@ If you want to change this, you either have to extend the existing *Request* or 
         * create Request Data Domain Object
         * create Request Options Domain Object
     * updated dependencies
+* [0.14.0](https://github.com/bazzline/php_component_curl/tree/0.14.0) - released at 26.02.2016
+    * removed default header "application/x-www-form-urlencoded; charset=UTF-8" and added new *ContentTypeUtf8Html*
 * [0.13.0](https://github.com/bazzline/php_component_curl/tree/0.13.0) - released at 17.02.2016
     * fixed "ConverteJsonToArayBehaviour" by merging [pull request 3](https://github.com/bazzline/php_component_curl/pull/3)
 * [0.12.0](https://github.com/bazzline/php_component_curl/tree/0.12.0) - released at 08.02.2016
