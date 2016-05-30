@@ -168,6 +168,8 @@ If you want to change this, you either have to extend the existing *Request* or 
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
+* [0.14.2](https://github.com/bazzline/php_component_curl/tree/0.14.2) - released at 30.05.2016
+    * relaxed dependency to mockery
 * [0.14.1](https://github.com/bazzline/php_component_curl/tree/0.14.1) - released at 11.03.2016
     * removed *.php* for examples and made them executable
     * updated dependencies
