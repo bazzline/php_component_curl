@@ -85,6 +85,38 @@ echo 'status code: ' . $response->statusCode() . PHP_EOL;
 * [Post Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_post_request)
 * [Put Request](https://github.com/bazzline/php_component_curl/blob/master/example/make_a_put_request)
 
+## More Examples
+
+### Post Request with basic authentication
+
+```
+//begin of runtime environments
+$factory        = new BuilderFactory();
+$builder        = $factory->create();
+$data           = array(
+    'there'     => 'is',
+    'no'        => 'foo',
+    'without'   => 'a bar'
+);
+$password       = '<super secret password>';
+$username       = 'foo@bar.ru';
+$url            = 'https://foo.bar.ru/api/my/rest/endpoint/v1';
+//end of runtime environments
+
+//begin building the request
+$builder->asJson();
+$builder->onTheUrl($url);
+$builder->withTheData($data);
+$builder->withTheOption(new SetBasicAuthentication());
+$builder->withTheOption(new SetUsernameAndPassword($username, $password));
+$builder->usePost();
+//end building the request
+
+$request = $builder->andFetchTheResponse();
+echo PHP_EOL . 'dumping the request' . PHP_EOL;
+var_dump($request);
+```
+
 # Terms
 
 * [Dispatcher](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Dispatcher/Dispatcher.php)
@@ -132,13 +164,17 @@ If you want to change this, you either have to extend the existing *Request* or 
 
 ## By Hand
 
-    mkdir -p vendor/net_bazzline/php_component_curl
-    cd vendor/net_bazzline/php_component_curl
-    git clone https://github.com/bazzline/php_component_curl .
+```
+mkdir -p vendor/net_bazzline/php_component_curl
+cd vendor/net_bazzline/php_component_curl
+git clone https://github.com/bazzline/php_component_curl .
+```
 
 ## With [Packagist](https://packagist.org/packages/net_bazzline/php_component_curl)
 
-    composer require net_bazzline/php_component_curl:dev-master
+```
+composer require net_bazzline/php_component_curl:dev-master
+```
 
 # Links
 
@@ -168,6 +204,7 @@ If you want to change this, you either have to extend the existing *Request* or 
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
+    * started more examples section
 * [0.14.2](https://github.com/bazzline/php_component_curl/tree/0.14.2) - released at 30.05.2016
     * relaxed dependency to mockery
 * [0.14.1](https://github.com/bazzline/php_component_curl/tree/0.14.1) - released at 11.03.2016
