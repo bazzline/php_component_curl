@@ -201,6 +201,7 @@ composer require net_bazzline/php_component_curl:dev-master
                 * https://secure.php.net/manual/en/function.curl-multi-init.php
             * add RequestModifier
                 * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
+            * add support for parallel request execution like in the [stil/curl](https://github.com/stil/curl-easy) library
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
