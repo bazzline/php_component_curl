@@ -206,6 +206,8 @@ composer require net_bazzline/php_component_curl:dev-master
         * create Request Data Domain Object
         * create Request Options Domain Object
     * started more examples section
+* [0.14.3](https://github.com/bazzline/php_component_curl/tree/0.14.3) - released at 19.09.2016
+    * added [XHeaderLine](https://github.com/bazzline/php_component_curl/tree/0.14.3/source/Net/Bazzline/Component/Curl/HeaderLine/XHeaderLine.php)
 * [0.14.2](https://github.com/bazzline/php_component_curl/tree/0.14.2) - released at 30.05.2016
     * relaxed dependency to mockery
 * [0.14.1](https://github.com/bazzline/php_component_curl/tree/0.14.1) - released at 11.03.2016
