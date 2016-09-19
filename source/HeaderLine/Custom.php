@@ -5,7 +5,7 @@
  */
 namespace Net\Bazzline\Component\Curl\HeaderLine;
 
-class XHeaderLine extends AbstractHeaderLine
+class Custom extends AbstractHeaderLine
 {
     /** @var string */
     private $prefix;
@@ -14,24 +14,30 @@ class XHeaderLine extends AbstractHeaderLine
     private $suffix;
 
     /**
-     * XHeaderLine constructor.
+     * Custom constructor.
      *
-     * @param string $identifier    - e.g. X-My-Headerline
+     * @param string $identifier    - e.g. My-Header-Line - "X-" will be prefixed automatically
      * @param string $value         - e.g. bazzline
      */
     public function __construct($identifier, $value)
     {
-        $this->prefix   = $identifier;
+        $this->prefix   = 'X-' . $identifier;
         $this->suffix   = $value;
     }
 
+    /**
+     * @return string
+     */
     protected function prefix()
     {
-        // TODO: Implement prefix() method.
+        return $this->prefix;
     }
 
+    /**
+     * @return string
+     */
     protected function suffix()
     {
-        // TODO: Implement suffix() method.
+        return $this->suffix;
     }
 }
