@@ -206,10 +206,10 @@ composer require net_bazzline/php_component_curl:dev-master
         * create Request Data Domain Object
         * create Request Options Domain Object
 * [0.14.4](https://github.com/bazzline/php_component_curl/tree/0.14.4) - released at 20.09.2016
-    * added [AcceptLanguate](https://github.com/bazzline/php_component_curl/blob/0.14.4/source/Net/Bazzline/Component/Curl/HeaderLine/AcceptLanguage.php) header line
+    * added [AcceptLanguate](https://github.com/bazzline/php_component_curl/blob/0.14.4/source/HeaderLine/AcceptLanguage.php) header line
 * [0.14.3](https://github.com/bazzline/php_component_curl/tree/0.14.3) - released at 19.09.2016
-    * added [AcceptEncoding](https://github.com/bazzline/php_component_curl/blob/0.14.3/source/Net/Bazzline/Component/Curl/HeaderLine/AcceptEncoding.php) header line
-    * added [Custom](https://github.com/bazzline/php_component_curl/blob/0.14.3/source/Net/Bazzline/Component/Curl/HeaderLine/Custom.php) header line
+    * added [AcceptEncoding](https://github.com/bazzline/php_component_curl/blob/0.14.3/source/HeaderLine/AcceptEncoding.php) header line
+    * added [Custom](https://github.com/bazzline/php_component_curl/blob/0.14.3/source/HeaderLine/Custom.php) header line
     * started more examples section
     * updated phpunit to 5.5.*
 * [0.14.2](https://github.com/bazzline/php_component_curl/tree/0.14.2) - released at 30.05.2016
