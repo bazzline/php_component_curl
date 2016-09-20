@@ -125,7 +125,7 @@ var_dump($request);
 * [Request](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Request/Request.php)
     * object oriented approach reflecting the request
     * [HeadLine](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/HeadLine/HeadLineInterface.php)
-        * object oriented http headers, start a pull request if you need more
+        * object oriented [http headers](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) ([list](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) of available headers), start a pull request if you need more
     * [Options](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Option/OptionInterface.php)
         * object oriented curl options, start a pull request if you need more
     * Parameters
@@ -205,10 +205,12 @@ composer require net_bazzline/php_component_curl:dev-master
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
-    * started more examples section
+* [0.14.4](https://github.com/bazzline/php_component_curl/tree/0.14.4) - released at 20.09.2016
+    * added [AcceptLanguate](https://github.com/bazzline/php_component_curl/tree/0.14.4/source/Net/Bazzline/Component/Curl/HeaderLine/AcceptLanguage.php) header line
 * [0.14.3](https://github.com/bazzline/php_component_curl/tree/0.14.3) - released at 19.09.2016
     * added [AcceptEncoding](https://github.com/bazzline/php_component_curl/tree/0.14.3/source/Net/Bazzline/Component/Curl/HeaderLine/AcceptEncoding.php) header line
     * added [Custom](https://github.com/bazzline/php_component_curl/tree/0.14.3/source/Net/Bazzline/Component/Curl/HeaderLine/Custom.php) header line
+    * started more examples section
     * updated phpunit to 5.5.*
 * [0.14.2](https://github.com/bazzline/php_component_curl/tree/0.14.2) - released at 30.05.2016
     * relaxed dependency to mockery
