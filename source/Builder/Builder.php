@@ -214,7 +214,7 @@ class Builder
         return $this;
     }
 
-    //@todo better nameing?
+    //@todo better naming?
     //  callDelete
     /**
      * @return $this
