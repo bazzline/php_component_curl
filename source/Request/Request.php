@@ -170,15 +170,16 @@ class Request
     /**
      * @param string $url
      * @param array $parameters
+     * @param null|string|array $data
      * @return Response
      */
-    public function delete($url, array $parameters = array())
+    public function delete($url, array $parameters = array(), $data = null)
     {
         return $this->execute(
             $url,
             self::HTTP_METHOD_DELETE,
             $parameters,
-            array()
+            $data
         );
     }
 

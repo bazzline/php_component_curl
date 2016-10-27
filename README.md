@@ -205,6 +205,8 @@ composer require net_bazzline/php_component_curl:dev-master
             * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
         * create Request Data Domain Object
         * create Request Options Domain Object
+* [0.15.0](https://github.com/bazzline/php_component_curl/tree/0.15.0) - released at 27.10.2016
+    * added support to send data when calling http method DELETE
 * [0.14.4](https://github.com/bazzline/php_component_curl/tree/0.14.4) - released at 20.09.2016
     * added [AcceptLanguate](https://github.com/bazzline/php_component_curl/blob/0.14.4/source/HeaderLine/AcceptLanguage.php) header line
 * [0.14.3](https://github.com/bazzline/php_component_curl/tree/0.14.3) - released at 19.09.2016

@@ -303,7 +303,7 @@ class Builder
     {
         switch ($method) {
             case self::METHOD_DELETE:
-                $response = $request->delete($url, $parameters);
+                $response = $request->delete($url, $parameters, $data);
                 break;
             case self::METHOD_GET:
                 $response = $request->get($url, $parameters);
