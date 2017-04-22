@@ -76,7 +76,7 @@ class RequestFactory implements FactoryInterface
      */
     protected function getDefaultHeaderLines()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -84,7 +84,7 @@ class RequestFactory implements FactoryInterface
      */
     protected function getDefaultRawHeaderLine()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -92,9 +92,9 @@ class RequestFactory implements FactoryInterface
      */
     protected function getDefaultOptions()
     {
-        return array(
+        return [
             new SetTimeOutInSeconds(10)
-        );
+        ];
     }
 
     /**
@@ -102,13 +102,13 @@ class RequestFactory implements FactoryInterface
      */
     protected function getDefaultRawOptions()
     {
-        return array(
+        return [
             CURLOPT_AUTOREFERER     => true,
             CURLOPT_CONNECTTIMEOUT  => 5,
             CURLOPT_FOLLOWLOCATION  => true,
             CURLOPT_MAXREDIRS       => 10,
             CURLOPT_USERAGENT       => 'net/bazzline curl component for php'
-        );
+        ];
     }
 
     /**

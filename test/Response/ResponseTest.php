@@ -14,10 +14,10 @@ class ResponseTest extends AbstractTestCase
         $contentType    = 'the content type';
         $error          = 'this is an error';
         $errorCode      = __LINE__;
-        $headerLines = array(
+        $headerLines = [
             'bar'   => 'foo',
             'foo'   => 'bar'
-        );
+        ];
         $statusCode     = __LINE__;
 
         $response = $this->getNewResponse($content, $contentType, $error, $errorCode, $headerLines, $statusCode);
@@ -37,7 +37,7 @@ class ResponseTest extends AbstractTestCase
         $contentType    = 'the content type';
         $error          = 'this is an error';
         $errorCode      = __LINE__;
-        $headerLines = array();
+        $headerLines = [];
         $statusCode     = __LINE__;
 
         $response = $this->getNewResponse($content, $contentType, $error, $errorCode, $headerLines, $statusCode);
@@ -51,7 +51,7 @@ class ResponseTest extends AbstractTestCase
         $contentType    = 'the content type';
         $error          = 'this is an error';
         $errorCode      = __LINE__;
-        $headerLines    = array();
+        $headerLines    = [];
         $statusCode     = __LINE__;
 
         $response = $this->getNewResponse($content, $contentType, $error, $errorCode, $headerLines, $statusCode);

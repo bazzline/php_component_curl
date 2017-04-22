@@ -22,22 +22,22 @@ class Request
     const HTTP_METHOD_PUT       = 'PUT';
 
     /** @var array */
-    private $defaultHeaderLines = array();
+    private $defaultHeaderLines = [];
 
     /** @var array */
-    private $defaultOptions = array();
+    private $defaultOptions = [];
 
     /** @var DispatcherInterface */
     private $dispatcher;
 
     /** @var array */
-    private $headerLines = array();
+    private $headerLines = [];
 
     /** @var Merge */
     private $merge;
 
     /** @var array */
-    private $options = array();
+    private $options = [];
 
     /**
      * @param DispatcherInterface $dispatcher
@@ -50,7 +50,7 @@ class Request
      *  or:
      *      <identifier> => <value>
      */
-    public function __construct(DispatcherInterface $dispatcher, Merge $merge, array $defaultHeaderLines = array(), array $defaultOptions = array())
+    public function __construct(DispatcherInterface $dispatcher, Merge $merge, array $defaultHeaderLines = [], array $defaultOptions = [])
     {
         $this->defaultHeaderLines   = $defaultHeaderLines;
         $this->defaultOptions       = $defaultOptions;
@@ -109,13 +109,13 @@ class Request
      * @param array $parameters
      * @return Response
      */
-    public function get($url, array $parameters = array())
+    public function get($url, array $parameters = [])
     {
         return $this->execute(
             $url,
             self::HTTP_METHOD_GET,
             $parameters,
-            array()
+            []
         );
     }
 
@@ -125,7 +125,7 @@ class Request
      * @param null|string|array $data
      * @return Response
      */
-    public function post($url, array $parameters = array(), $data = null)
+    public function post($url, array $parameters = [], $data = null)
     {
         return $this->execute(
             $url,
@@ -141,7 +141,7 @@ class Request
      * @param null|string|array $data
      * @return Response
      */
-    public function put($url, array $parameters = array(), $data = null)
+    public function put($url, array $parameters = [], $data = null)
     {
         return $this->execute(
             $url,
@@ -157,7 +157,7 @@ class Request
      * @param null|string|array $data
      * @return Response
      */
-    public function patch($url, array $parameters = array(), $data = null)
+    public function patch($url, array $parameters = [], $data = null)
     {
         return $this->execute(
             $url,
@@ -173,7 +173,7 @@ class Request
      * @param null|string|array $data
      * @return Response
      */
-    public function delete($url, array $parameters = array(), $data = null)
+    public function delete($url, array $parameters = [], $data = null)
     {
         return $this->execute(
             $url,
@@ -201,12 +201,12 @@ class Request
      */
     public function reset($alsoTheDefaults = false)
     {
-        $this->headerLines  = array();
-        $this->options      = array();
+        $this->headerLines  = [];
+        $this->options      = [];
 
         if ($alsoTheDefaults) {
-            $this->defaultHeaderLines   = array();
-            $this->defaultOptions       = array();
+            $this->defaultHeaderLines   = [];
+            $this->defaultOptions       = [];
         }
     }
 
@@ -268,7 +268,7 @@ class Request
      * @param null|string|array $data
      * @return Response
      */
-    private function execute($url, $method, array $parameters = array(), $data = null)
+    private function execute($url, $method, array $parameters = [], $data = null)
     {
         //begin of dependencies
         $dispatcher             = $this->dispatcher;

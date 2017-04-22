@@ -20,56 +20,62 @@ class RequestTest extends AbstractTestCase
     {
         $url = $this->getUrl();
 
-        return array(
-            'with parameters'   =>  array(
-                'parameters'    => array(),
+        return [
+            'with parameters'   =>  [
+                'parameters'    => [],
                 'url'           => $url,
                 'expected_url'  => $url
-            ),
-            'with parameter parameter only'   =>  array(
-                'parameters'    => array('key'),
+            ],
+            'with parameter parameter only'   =>  [
+                'parameters'    => [
+                    'key'
+                ],
                 'url'           => $url,
                 'expected_url'  => $url . '?0=key'
-            ),
-            'with parameter key only'   =>  array(
-                'parameters'    => array('key' => null),
+            ],
+            'with parameter key only'   =>  [
+                'parameters'    => [
+                    'key' => null
+                ],
                 'url'           => $url,
                 'expected_url'  => $url
-            ),
-            'with one parameter'   =>  array(
-                'parameters'    => array('key' => 'value'),
+            ],
+            'with one parameter'   =>  [
+                'parameters'    => [
+                    'key' => 'value'
+                ],
                 'url'           => $url,
                 'expected_url'  => $url . '?key=value'
-            ),
-            'with two parameter'   =>  array(
-                'parameters'    => array(
+            ],
+            'with two parameter'   =>  [
+                'parameters'    => [
                     'one' => 'value',
                     'two' => 'value'
-                ),
+                ],
                 'url'           => $url,
                 'expected_url'  => $url . '?one=value&two=value'
-            ),
-            'with multiple parameter'   =>  array(
-                'parameters'    => array(
+            ],
+            'with multiple parameter'   =>  [
+                'parameters'    => [
                     'one' => 'value',
                     'two' => 'value',
                     'three' => 'value'
-                ),
+                ],
                 'url'           => $url,
                 'expected_url'  => $url . '?one=value&two=value&three=value'
-            ),
-            'with nested parameter'   =>  array(
-                'parameters'    => array(
-                    'key' => array(
+            ],
+            'with nested parameter'   =>  [
+                'parameters'    => [
+                    'key' => [
                         'one',
                         'two',
                         'three'
-                    )
-                ),
+                    ]
+                ],
                 'url'           => $url,
                 'expected_url'  => $url . '?key%5B0%5D=one&key%5B1%5D=two&key%5B2%5D=three'
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -78,48 +84,53 @@ class RequestTest extends AbstractTestCase
     public function testCaseWithUrlParametersAndData()
     {
         $testCaseTemplates  = $this->testCaseWithUrlParameters();
-        $testCases          = array();
+        $testCases          = [];
         $object             = new stdClass();
 
         $object->bar = 'foo';
         $object->foo = 'bar';
 
         foreach ($testCaseTemplates as $name => $template) {
-            $testCases[$name . ' without data'] = array(
+            $testCases[$name . ' without data'] = [
                 'parameters'    => $template['parameters'],
                 'data'          => null,
                 'url'           => $template['url'],
                 'expected_url'  => $template['expected_url'],
                 'expected_data' => null
-            );
-            $testCases[$name . ' with int as data'] = array(
+            ];
+            $testCases[$name . ' with int as data'] = [
                 'parameters'    => $template['parameters'],
                 'data'          => 42,
                 'url'           => $template['url'],
                 'expected_url'  => $template['expected_url'],
                 'expected_data' => 42
-            );
-            $testCases[$name . ' with string as data'] = array(
+            ];
+            $testCases[$name . ' with string as data'] = [
                 'parameters'    => $template['parameters'],
                 'data'          => 'there is no foo without a bar',
                 'url'           => $template['url'],
                 'expected_url'  => $template['expected_url'],
                 'expected_data' => 'there is no foo without a bar'
-            );
-            $testCases[$name . ' with array as data'] = array(
+            ];
+            $testCases[$name . ' with array as data'] = [
                 'parameters'    => $template['parameters'],
-                'data'          => array('there' => 'is', 'no' => 'foo', 'without' => 'a', 'bar'),
+                'data'          => [
+                    'there' => 'is',
+                    'no' => 'foo',
+                    'without' => 'a',
+                    'bar'
+                ],
                 'url'           => $template['url'],
                 'expected_url'  => $template['expected_url'],
                 'expected_data' => 'there=is&no=foo&without=a&0=bar'
-            );
-            $testCases[$name . ' with object as data'] = array(
+            ];
+            $testCases[$name . ' with object as data'] = [
                 'parameters'    => $template['parameters'],
                 'data'          => $object,
                 'url'           => $template['url'],
                 'expected_url'  => $template['expected_url'],
                 'expected_data' => 'bar=foo&foo=bar'
-            );
+            ];
         }
 
         return $testCases;
@@ -128,12 +139,12 @@ class RequestTest extends AbstractTestCase
     public function testClone()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
-        $headerLines    = array(
+        $headerLines    = [
             'foo: bar'
-        );
-        $options        = array(
+        ];
+        $options        = [
             CURLOPT_AUTOREFERER => true
-        );
+        ];
         $request        = $this->getNewRequest($dispatcher, $headerLines, $options);
         $response       = $this->getNewResponse();
 
@@ -154,7 +165,7 @@ class RequestTest extends AbstractTestCase
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
         $headerLine     = new ContentTypeIsUtf8Json();
-        $request        = $this->getNewRequest($dispatcher, array(), array());
+        $request        = $this->getNewRequest($dispatcher, [], []);
         $response       = $this->getNewResponse();
 
         $request->addHeaderLine($headerLine);
@@ -162,7 +173,13 @@ class RequestTest extends AbstractTestCase
         $dispatcher->shouldReceive('dispatch')
             ->with(
                 $this->getUrl(),
-                $this->buildDispatcherOptions('PUT', array($headerLine->line()), array())
+                $this->buildDispatcherOptions(
+                    'PUT',
+                    [
+                        $headerLine->line()
+                    ],
+                    []
+                )
             )
             ->andReturn($response)
             ->once();
@@ -174,7 +191,7 @@ class RequestTest extends AbstractTestCase
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
         $option         = new SetTimeOutInSeconds(__LINE__);
-        $request        = $this->getNewRequest($dispatcher, array(), array());
+        $request        = $this->getNewRequest($dispatcher, [], []);
         $response       = $this->getNewResponse();
 
         $request->addOption($option);
@@ -184,10 +201,10 @@ class RequestTest extends AbstractTestCase
                 $this->getUrl(),
                 $this->buildDispatcherOptions(
                     'PUT',
-                    array(),
-                    array(
+                    [],
+                    [
                         $option->identifier() => $option->value()
-                    )
+                    ]
                 )
             )
             ->andReturn($response)
@@ -200,7 +217,7 @@ class RequestTest extends AbstractTestCase
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
         $headerLine     = 'foo: bar';
-        $request        = $this->getNewRequest($dispatcher, array(), array());
+        $request        = $this->getNewRequest($dispatcher, [], []);
         $response       = $this->getNewResponse();
 
         $request->addRawHeaderLine($headerLine);
@@ -208,7 +225,13 @@ class RequestTest extends AbstractTestCase
         $dispatcher->shouldReceive('dispatch')
             ->with(
                 $this->getUrl(),
-                $this->buildDispatcherOptions('PUT', array($headerLine), array())
+                $this->buildDispatcherOptions(
+                    'PUT',
+                    [
+                        $headerLine
+                    ],
+                    []
+                )
             )
             ->andReturn($response)
             ->once();
@@ -219,7 +242,7 @@ class RequestTest extends AbstractTestCase
     public function testAddRawOption()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
-        $request        = $this->getNewRequest($dispatcher, array(), array());
+        $request        = $this->getNewRequest($dispatcher, [], []);
         $response       = $this->getNewResponse();
 
         $request->addRawOption('foo', 'bar');
@@ -229,8 +252,10 @@ class RequestTest extends AbstractTestCase
                 $this->getUrl(),
                 $this->buildDispatcherOptions(
                     'PUT',
-                    array(),
-                    array('foo' => 'bar')
+                    [],
+                    [
+                        'foo' => 'bar'
+                    ]
                 )
             )
             ->andReturn($response)
@@ -310,8 +335,8 @@ class RequestTest extends AbstractTestCase
                 $expectedUrl,
                 $this->buildDispatcherOptions(
                     'PATCH',
-                    array(),
-                    array(),
+                    [],
+                    [],
                     $expectedData
                 )
             )
@@ -342,8 +367,8 @@ class RequestTest extends AbstractTestCase
                 $expectedUrl,
                 $this->buildDispatcherOptions(
                     'POST',
-                    array(),
-                    array(),
+                    [],
+                    [],
                     $expectedData
                 )
             )
@@ -374,8 +399,8 @@ class RequestTest extends AbstractTestCase
                 $expectedUrl,
                 $this->buildDispatcherOptions(
                     'PUT',
-                    array(),
-                    array(),
+                    [],
+                    [],
                     $expectedData
                 )
             )
@@ -388,7 +413,7 @@ class RequestTest extends AbstractTestCase
     public function testRestWithoutResettingTheDefaults()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
-        $request        = $this->getNewRequest($dispatcher, array(), array());
+        $request        = $this->getNewRequest($dispatcher, [], []);
         $response       = $this->getNewResponse();
 
         $request->addRawOption('foo', 'bar');
@@ -408,7 +433,13 @@ class RequestTest extends AbstractTestCase
     public function testRestWithResettingTheDefaults()
     {
         $dispatcher     = $this->getMockOfTheDispatcher();
-        $request        = $this->getNewRequest($dispatcher, array('foo' => 'bar'), array());
+        $request        = $this->getNewRequest(
+            $dispatcher,
+            [
+                'foo' => 'bar'
+            ],
+            []
+        );
         $response       = $this->getNewResponse();
 
         $request->reset(true);

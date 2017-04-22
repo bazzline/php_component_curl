@@ -24,7 +24,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
      * @param null|mixed $data
      * @return array
      */
-    protected function buildDispatcherOptions($method, array $headerLines = array(), array $options = array(), $data = null)
+    protected function buildDispatcherOptions($method, array $headerLines = [], array $options = [], $data = null)
     {
         $isDataProvided         = (!is_null($data));
         $headerLines[]          = 'X-HTTP-Method-Override: ' . $method; //@see: http://tr.php.net/curl_setopt#109634
@@ -61,7 +61,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
      * @param array $defaultResponseBehaviours
      * @return Builder
      */
-    protected function getNewBuilder(Request $request, array $defaultResponseBehaviours = array())
+    protected function getNewBuilder(Request $request, array $defaultResponseBehaviours = [])
     {
         return new Builder($request, new Merge(), $defaultResponseBehaviours);
     }
@@ -72,7 +72,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
      * @param array $defaultOptions
      * @return Request
      */
-    protected function getNewRequest(DispatcherInterface $dispatcher, array $defaultHeaderLines = array(), array $defaultOptions = array())
+    protected function getNewRequest(DispatcherInterface $dispatcher, array $defaultHeaderLines = [], array $defaultOptions = [])
     {
         return new Request($dispatcher, new Merge(), $defaultHeaderLines, $defaultOptions);
     }
@@ -86,7 +86,7 @@ abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
      * @param int $statusCode
      * @return Response
      */
-    protected function getNewResponse($content = 'example content', $contentType = 'example content type', $error = '', $errorCode = 0, array $headLines = array(), $statusCode = 200)
+    protected function getNewResponse($content = 'example content', $contentType = 'example content type', $error = '', $errorCode = 0, array $headLines = [], $statusCode = 200)
     {
         return new Response($content, $contentType, $error, $errorCode, $headLines, $statusCode);
     }

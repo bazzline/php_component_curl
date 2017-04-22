@@ -16,7 +16,7 @@ class AcceptEncoding extends AbstractHeaderLine
     /**
      * AcceptEncoding constructor.
      *
-     * @param array|string[] $encodings - e.g. array('gzip', 'deflate')
+     * @param array|string[] $encodings - e.g. ['gzip', 'deflate']
      */
     public function __construct(array $encodings)
     {

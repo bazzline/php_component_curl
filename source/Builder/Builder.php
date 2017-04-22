@@ -56,7 +56,7 @@ class Builder
      * @param Merge $merge
      * @param array|ResponseBehaviourInterface[] $defaultResponseBehaviours
      */
-    public function __construct(Request $request, Merge $merge, array $defaultResponseBehaviours = array())
+    public function __construct(Request $request, Merge $merge, array $defaultResponseBehaviours = [])
     {
         $this->defaultResponseBehaviours    = $defaultResponseBehaviours;
         $this->merge                        = $merge;
@@ -117,9 +117,9 @@ class Builder
     {
         $this->asJson               = false;
         $this->data                 = null;
-        $this->parameters           = array();
+        $this->parameters           = [];
         $this->request->reset($alsoTheDefaults);
-        $this->responseBehaviours   = array();
+        $this->responseBehaviours   = [];
         $this->url                  = null;
 
         return $this;

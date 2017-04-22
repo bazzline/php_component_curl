@@ -124,12 +124,12 @@ class Response
      */
     public function convertIntoAnArray()
     {
-        return array(
+        return [
                 self::ARRAY_KEY_CONTENT         => $this->content,
                 self::ARRAY_KEY_CONTENT_TYPE    => $this->contentType,
                 self::ARRAY_KEY_ERROR           => $this->error,
                 self::ARRAY_KEY_ERROR_CODE      => $this->errorCode,
                 self::ARRAY_KEY_STATUS_CODE     => $this->statusCode
-            );
+            ];
     }
 }

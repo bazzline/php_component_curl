@@ -15,7 +15,7 @@ class LoggingDispatcher extends Dispatcher
      * @param array $options
      * @return Response
      */
-    public function dispatch($url, array $options = array())
+    public function dispatch($url, array $options = [])
     {
         $this->log($url, $options);
 

@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * dropped support for php version below 5.6
 * moved release history from the README.md into this dedicated CHANGELOG.md
+* replaced "array()" notation with "[]"
 
 ## [0.15.1](https://github.com/bazzline/php_component_curl/tree/0.15.1) - released at 2017-03-29
 

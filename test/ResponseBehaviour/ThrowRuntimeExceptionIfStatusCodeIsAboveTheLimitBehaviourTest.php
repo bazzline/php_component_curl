@@ -18,26 +18,26 @@ class ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviourTest extends Abst
      */
     public function testCases()
     {
-        return array(
-            'status code below limit' => array(
+        return [
+            'status code below limit' => [
                 0,
                 1,
                 $this->createResponse(0),
                 false
-            ),
-            'status code on the limit' => array(
+            ],
+            'status code on the limit' => [
                 1,
                 1,
                 $this->createResponse(1),
                 true
-            ),
-            'status code over the limit' => array(
+            ],
+            'status code over the limit' => [
                 2,
                 1,
                 $this->createResponse(2),
                 true
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -69,6 +69,6 @@ class ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviourTest extends Abst
      */
     private function createResponse($statusCode)
     {
-        return $this->getNewResponse('example content', 'example content type', '', 0, array(), $statusCode);
+        return $this->getNewResponse('example content', 'example content type', '', 0, [], $statusCode);
     }
 }

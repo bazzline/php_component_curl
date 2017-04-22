@@ -18,7 +18,7 @@ class Dispatcher implements DispatcherInterface
      * @param array $options
      * @return Response
      */
-    public function dispatch($url, array $options = array())
+    public function dispatch($url, array $options = [])
     {
         $this->reset();
         $handler    = $this->getHandler($url);
@@ -66,7 +66,10 @@ class Dispatcher implements DispatcherInterface
     protected function setOptions($handler, array $options)
     {
         $options[CURLINFO_HEADER_OUT]       = 1;
-        $options[CURLOPT_HEADERFUNCTION]    = array($this, 'processHeadLine');
+        $options[CURLOPT_HEADERFUNCTION]    = [
+            $this,
+            'processHeadLine'
+        ];
         $options[CURLOPT_RETURNTRANSFER]    = true;
 
         curl_setopt_array($handler, $options);
@@ -97,6 +100,6 @@ class Dispatcher implements DispatcherInterface
 
     private function reset()
     {
-        $this->headerLines = array();
+        $this->headerLines = [];
     }
 }
