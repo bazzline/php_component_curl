@@ -14,6 +14,8 @@ The versioneye status is:
 
 Take a look on [openhub.net](https://www.openhub.net/p/php_component_curl).
 
+The current change log can be found [here](https://github.com/bazzline/php_component_curl/blob/master/CHANGELOG.md).
+
 This component is not developed to replace [guzzle](http://docs.guzzlephp.org/en/latest/).
 
 # Example
@@ -190,116 +192,6 @@ composer require net_bazzline/php_component_curl:dev-master
 * https://github.com/brodkinca/BCA-PHP-CURL
 * https://github.com/miliqi/laravel-curl
 * https://github.com/andrefigueira/Lib-Curl
-
-# History
-
-* upcomming
-    * @todo
-        * to discuss
-            * add [dispatcher](https://github.com/jyggen/curl/blob/master/src/Dispatcher.php) or HandlerGenerator/HandlerFactory
-                * https://secure.php.net/manual/en/function.curl-init.php
-                * https://secure.php.net/manual/en/function.curl-multi-init.php
-            * add RequestModifier
-                * e.g. for adding the JsonModifier which converts the data into a json, adds the fitting ContentType etc.
-            * add support for parallel request execution like in the [stil/curl](https://github.com/stil/curl-easy) library
-            * replace current dispatcher and logging dispatcher strategy with an event driven approach (currently only needed for logging)?
-        * create Request Data Domain Object
-        * create Request Options Domain Object
-* [0.15.1](https://github.com/bazzline/php_component_curl/tree/0.15.1) - released at 29.03.2017
-    * moved phpunit dependency to 5.7
-* [0.15.0](https://github.com/bazzline/php_component_curl/tree/0.15.0) - released at 27.10.2016
-    * added support to send data when calling http method DELETE
-* [0.14.4](https://github.com/bazzline/php_component_curl/tree/0.14.4) - released at 20.09.2016
-    * added [AcceptLanguate](https://github.com/bazzline/php_component_curl/blob/0.14.4/source/HeaderLine/AcceptLanguage.php) header line
-* [0.14.3](https://github.com/bazzline/php_component_curl/tree/0.14.3) - released at 19.09.2016
-    * added [AcceptEncoding](https://github.com/bazzline/php_component_curl/blob/0.14.3/source/HeaderLine/AcceptEncoding.php) header line
-    * added [Custom](https://github.com/bazzline/php_component_curl/blob/0.14.3/source/HeaderLine/Custom.php) header line
-    * started more examples section
-    * updated phpunit to 5.5.*
-* [0.14.2](https://github.com/bazzline/php_component_curl/tree/0.14.2) - released at 30.05.2016
-    * relaxed dependency to mockery
-* [0.14.1](https://github.com/bazzline/php_component_curl/tree/0.14.1) - released at 11.03.2016
-    * removed *.php* for examples and made them executable
-    * updated dependencies
-* [0.14.0](https://github.com/bazzline/php_component_curl/tree/0.14.0) - released at 26.02.2016
-    * removed default header "application/x-www-form-urlencoded; charset=UTF-8" and added new *ContentTypeUtf8Html*
-* [0.13.0](https://github.com/bazzline/php_component_curl/tree/0.13.0) - released at 17.02.2016
-    * fixed "ConverteJsonToArayBehaviour" by merging [pull request 3](https://github.com/bazzline/php_component_curl/pull/3)
-* [0.12.0](https://github.com/bazzline/php_component_curl/tree/0.12.0) - released at 08.02.2016
-    * added *curl_close($handler)* in default *Dispatcher*
-    * fixed bug in *BuilderFactory::createRequestFromFactory()*
-    * fixed bug in *RequestFactory::create()*
-* [0.11.0](https://github.com/bazzline/php_component_curl/tree/0.11.0) - released at 08.02.2016
-    * fixed major bug in *createRequestFromFactory* to *BuilderFactory*
-    * refactored internals of Builder::andFetchTheResponse()
-    * refactored internals of Request::execute()
-    * refactored internals of RequestFactory::create()
-* [0.10.0](https://github.com/bazzline/php_component_curl/tree/0.10.0) - released at 08.02.2016
-    * added public *overwriteRequestFactory()* to *BuilderFactory*
-    * fixed broken links in the readme
-    * moved to *psr-4* autoloading
-    * removed dedicated integration test for php 5.3.3
-* [0.9.1](https://github.com/bazzline/php_component_curl/tree/0.9.1) - released at 14.01.2016
-    * updated dependencies
-* [0.9.0](https://github.com/bazzline/php_component_curl/tree/0.9.0) - released at 05.01.2016
-    * renamed *EnableSslVerifyPeer* to *DisableSslVerifyPeer*
-    * renamed *SetSslVerifyHost* to *DisableSslVerifyHost*
-* [0.8.0](https://github.com/bazzline/php_component_curl/tree/0.8.0) - released at 05.01.2016
-    * *Response::headerLine()* is now throwing an *\InvalidArgumentException* instead of returning *null* when a not existing *$prefix* is provided
-* [0.7.0](https://github.com/bazzline/php_component_curl/tree/0.7.0) - released at 21.12.2015
-    * added *overwriteDispatcher* method into *BuilderFactory* and *RequestFactory*
-    * created *LoggingDispatcher* (basic standard out logging - you can overwrite this behaviour)
-    * implemented usage of *LoggingDispatcher* in the examples
-    * moved *Builder* into own namespace
-    * moved *Dispatcher* into own namespace
-    * moved *Request* into own namespace
-    * moved *Response* into own namespace
-    * refactored *RequestFactory* by extracting all header lines or options into protected methods
-    * renamed *HeadLine* into *HeaderLine*
-* [0.6.1](https://github.com/bazzline/php_component_curl/tree/0.6.1) - released at 18.12.2015
-    * added *Builder::withTheRawHeaderLine()* and *Builder::withTheRawOption()*
-* [0.6.0](https://github.com/bazzline/php_component_curl/tree/0.6.0) - released at 18.12.2015
-    * added *Not Available Curl Options* section in the readme
-    * moved setting of curl option "CURLOPT_RETURNTRANSFER" from *Request* into the default *Dispatcher*
-    * rearranged *Response* constructor parameters
-* [0.5.0](https://github.com/bazzline/php_component_curl/tree/0.5.0) - released at 17.12.2015
-    * added *Response::headerLines()* and *Response::headerLine($prefix)* and removed header output from the content
-* [0.4.1](https://github.com/bazzline/php_component_curl/tree/0.4.1) - released at 16.12.2015
-    * add Request::options(), Request::trace() and Request::head()
-    * fixed [RequestFactory](https://github.com/bazzline/php_component_curl/commit/82ab3e8a8a1f3c83f8bb50634cf5cba007e223a3)
-* [0.4.0](https://github.com/bazzline/php_component_curl/tree/0.4.0) - released at 16.12.2015
-    * added unit test for
-        * Builder
-        * ConvertJsonToArrayBehaviour
-        * ThrowRuntimeExceptionIfStatusCodeIsAboveTheLimitBehaviour
-    * fixed issue in Builder
-* [0.3.0](https://github.com/bazzline/php_component_curl/tree/0.3.0) - released at 16.12.2015
-    * fixed issue in BasicAuthentication HeadLine
-    * fixed issue in builder example
-    * fixed issue in Request when dealing with data that is not an array
-    * fixed linking to DispatcherInterface
-    * fixed style in DispatcherInterface
-    * added unit test for
-        * request
-    * added curl options
-* [0.2.0](https://github.com/bazzline/php_component_curl/tree/0.2.0) - released at 14.12.2015
-    * fixed issue in [Response::contentType()](https://github.com/bazzline/php_component_curl/commit/42841811e848628539b088af894410524cd61a68)
-    * fixed styles
-    * added [dispatcher interface](https://github.com/bazzline/php_component_curl/blob/master/source/Net/Bazzline/Component/Curl/Dispatcher/DispatcherInterface.php)
-    * added scrutinizer, travis-ci and version eye status
-    * added support for scrutinizer and travis-ci
-    * added support for url as optional argument in example scripts
-    * added unit test for
-        * response
-* [0.1.2](https://github.com/bazzline/php_component_curl/tree/0.1.2) - released at 10.12.2015
-    * adapted behaviour to support the "error" in the response
-    * extended terms
-* [0.1.1](https://github.com/bazzline/php_component_curl/tree/0.1.1) - released at 10.12.2015
-    * add description to terms
-    * add installation howto
-    * add link to examples
-* [0.1.0](https://github.com/bazzline/php_component_curl/tree/0.1.0) - released at 10.12.2015
-    * initial plumber release
 
 # Final Words
 
