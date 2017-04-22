@@ -28,6 +28,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+* updated composer.json file and restricted php version to 5.6 as minimum
+
 ## [1.0.0](https://github.com/bazzline/php_component_curl/tree/1.0.0) - released at 2017-04-23
 
 ### Added
