@@ -14,7 +14,8 @@
         "lgpl",
         "free as in freedom",
         "yacc",
-        "php7"
+        "php7",
+        "changelog"
     ],
     "type": "library",
     "minimum-stability": "dev",
