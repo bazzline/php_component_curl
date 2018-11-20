@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+* added php 7.2 to the travis test
+
 ### Changed
 
 * updated composer.json file and restricted php version to 5.6 as minimum
